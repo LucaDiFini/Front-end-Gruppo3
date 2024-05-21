@@ -1,0 +1,11 @@
+.btn-custom {
+    background-color: #fd0a7a;
+    border-color: #fd0a7a;
+  }
+  
+  .btn-custom:hover {
+    background-color: #a70053; /* Colore rosa più scuro per l'hover */
+    border-color: #a70053;
+  }
+  
+  
