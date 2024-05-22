@@ -1,87 +1,51 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 import styles from "./page.module.css";
 import classes from './page.module.css';
 import home from '@/assets/home.jpg';
+import primo from '@/assets/1.png';
+import secondo from '@/assets/2.png';
+import terzo from '@/assets/3.png';
+import VR from '@/assets/VR.png';
+import data from '@/assets/analist.png';
+import webdev from '@/assets/webdev.png';
+import cloud from '@/assets/cloud.png';
+import mark from '@/assets/mark.png';
+import webdes from '@/assets/webdes.png';
+import incom from '@/assets/incom.webp';
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
-      <div id="myCarousel" className="carousel slide mb-6" data-bs-ride="carousel">
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
-            <div className="container">
-              <div className="carousel-caption text-start">
-                <h1>Example headline.</h1>
-                <p className="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
-                <p><a className="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
-            <div className="container">
-              <div className="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Some representative placeholder content for the second slide of the carousel.</p>
-                <p><a className="btn btn-lg btn-primary" href="#">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
-            <div className="container">
-              <div className="carousel-caption text-end">
-                <h1>One more for good measure.</h1>
-                <p>Some representative placeholder content for the third slide of this carousel.</p>
-                <p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+      <div className={styles.section}>
+      <div className={styles.text}>
+      <h2>ITS INCOM</h2>
+      <h1>Scegli di <div>studiare un</div> <div>lavoro.</div></h1>
+      <p>
+                Metodo innovativo e tecnologia all’avanguardia per un percorso di crescita
+                professionale mirato a farti entrare nel mondo del lavoro con le giuste competenze.
+      </p>
+      <button className={styles.button}>RICHIEDI INFORMAZIONI</button>
       </div>
+      <div className={styles.image}>
+      <Image src={incom}/>
+      </div>
+      </div>
+
 
       <div className={classes.cerchi}>
         <div className="row">
           <div className="col-lg-4">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
+          <Image src={secondo} height={200} width={250} />
             <h4 className={`${classes.text} fw-normal`}>DEI NOSTRI STUDENTI TROVA LAVORO AL TERMINE DEL PERCORSO</h4>
           </div>
           <div className="col-lg-4">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
+            <Image src={primo} height={200} width={250} />
             <h4 className={`${classes.text} fw-normal`}>DELLE ORE DI FORMAZIONE SI SVOLGE IN TIROCINIO IN AZIENDA</h4>
           </div>
           <div className="col-lg-4">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
+            <Image src={terzo} height={200} width={250} />
             <h4 className={`${classes.text} fw-normal`}>DEI NOSTRI DOCENTI PROVENGONO DAL MONDO DEL LAVORO</h4>
           </div>
         </div>
@@ -130,101 +94,85 @@ export default function Home() {
 
 
 
+      <div className={styles.sections}>
+        <h1><strong>Il futuro è il lavoro che <div> desideri </div></strong></h1>
+        <p>La Fondazione <strong>ITS INCOM </strong> Tecnologie dell'<strong>IN</strong>formazione e della <strong>COM</strong>unicazione offre formazioni post-diploma rivolte ai futuri professionisti dell'informatica e programmazione, reti e infrastrutture, digital marketing, comunicazione multichannel, e le industrie di Data science. <strong>Collaboriamo quotidianamente con oltre 180 aziende</strong> del territorio per rafforzare la crescita degli allievi attraverso esperienze professionali mirate e una didattica innovativa legata al territorio.</p>
+      </div>
+
+
+
+
 
       <div className="album py-5 bg-body-tertiary">
         <div className="container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                </svg>
+              
+                <Image src={VR} layout="responsive" width={420} height={225} />
+              
                 <div className="card-body">
-                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p className="card-text">Diventa AR/VR Game Developer: acquisirai le competenze per modellare, strutturare, sviluppare e pubblicare applicazioni per la realtà aumentata e virtuale, videogiochi sui principali store, e creare esperienze interattive nei nuovi Metaversi.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                     </div>
-                    <small className="text-body-secondary">9 mins</small>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                </svg>
+              
+                <Image src={data} layout="responsive" width={420} height={225} />
+              
                 <div className="card-body">
-                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p className="card-text">Diventa professionista della gestione e analisi dei dati: imparerai a mettere i dati al servizio del business e a trovare la tua opportunità professionale nelle migliori aziende in Italia e all’estero.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                     </div>
-                    <small className="text-body-secondary">9 mins</small>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                </svg>
+                <Image src={webdev} layout="responsive" height={225} width={420} />
                 <div className="card-body">
-                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p className="card-text">Diventa Web Developer, avrai le competenze per supportare lo sviluppo e l’integrazione di soluzioni software evolute all’interno dei processi aziendali. Sarai in grado di lavorare con tecnologie moderne e contribuire all'innovazione delle aziende.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                     </div>
-                    <small className="text-body-secondary">9 mins</small>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                </svg>
+                <Image src={cloud} layout="responsive" height={225} width={420} />
                 <div className="card-body">
-                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p className="card-text">Diventa professionista della creazione di ambienti digitali complessi: imparerai a gestire ogni fase della progettazione di software e potrai lavorare nelle migliori aziende in Italia e all’estero.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      
                     </div>
-                    <small className="text-body-secondary">9 mins</small>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                </svg>
+                <Image src={mark} layout="responsive" height={225} width={420} />
                 <div className="card-body">
-                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p className="card-text">Diventa un professionista capace di conoscere e creare strategie marketing per i new media: potrai trovare lavoro come Digital ADS Specialist, Social Media Manager, Copywriter e molto altro.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      
                     </div>
-                    <small className="text-body-secondary">9 mins</small>
                   </div>
                   
                 </div>
@@ -232,19 +180,14 @@ export default function Home() {
             </div>
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                </svg>
+                <Image src={webdes} layout="responsive" height={225} width={420} />
                 <div className="card-body">
-                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p className="card-text">Diventa un professionista e gestisci ogni aspetto della comunicazione digital delle aziende: potrai trovare lavoro come Web Designer, Graphic Designer, Video Editor e molto altro.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      
                     </div>
-                    <small className="text-body-secondary">9 mins</small>
                   </div>
                   
                 </div>

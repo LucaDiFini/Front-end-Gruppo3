@@ -7,27 +7,27 @@ export default function Footer() {
   return (
     <footer className={classes.footer}>
       <div className={classes.logoContainer}>
-        <p>ANIME CHANNEL</p>
+        <p>ITS INCOM</p>
       </div>
       <nav className={classes.nav}>
         <ul>
           <li>
-            <Link href="/meals">Anime🔥</Link>
+            <Link href="/meals">Home</Link>
           </li>
           <li>
-            <Link href="/reviews">Reviews</Link>
+            <Link href="/reviews">Dashboard</Link>
           </li>
           <li>
-            <Link href="/about">About🌐</Link>
+            <Link href="/about">Corsi</Link>
           </li>
           <li>
-            <Link href="/contacts">Contacts</Link>
+            
           </li>
         </ul>
       </nav>
       <div className={classes.footerInfo}>
-        <p>&copy; 2024 Anime Channel. All rights reserved.</p>
-        <p>Contact us: contact@animechannel.com</p>
+        <p>&copy; 2024 ITSIncom. All rights reserved.</p>
+        <p>Contact us: contact@itsincom.it</p>
       </div>
     </footer>
   );
