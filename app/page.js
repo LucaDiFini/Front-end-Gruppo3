@@ -14,6 +14,7 @@ import mark from '@/assets/mark.png';
 import webdes from '@/assets/webdes.png';
 import incom from '@/assets/incom.webp';
 import Image from "next/image";
+import CallToAction from '@/components/call-to-action';
 
 export default function Home() {
   return (
@@ -196,6 +197,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <CallToAction />
     </div>
+    
   );
 }
