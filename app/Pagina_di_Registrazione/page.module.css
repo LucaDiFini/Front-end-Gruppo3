@@ -1,4 +1,9 @@
 /* page.module.css */
-.bgazurro {
+.form-bg-azzurro {
     background-color: #21b8d0;
+    /* Colore azzurro */
+    padding: 20px;
+    /* Padding per il form */
+    border-radius: 10px;
+    /* Arrotonda gli angoli del form */
 }

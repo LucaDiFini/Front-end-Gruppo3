@@ -1,11 +1,15 @@
-.btn-custom {
-    background-color: #fd0a7a;
-    border-color: #fd0a7a;
-  }
-  
-  .btn-custom:hover {
-    background-color: #a70053; /* Colore rosa più scuro per l'hover */
-    border-color: #a70053;
-  }
-  
-  
+/* page.module.css */
+.form-bg-azzurro {
+  background-color: #21b8d0; /* Colore azzurro */
+  padding: 1%; /* Ridotto ulteriormente il padding per il form */
+  border-radius: 10px; /* Arrotonda gli angoli del form */
+  max-width: 500px; /* Imposta una larghezza massima */
+  width: 100%; /* Assicura che il form occupi tutta la larghezza disponibile fino alla larghezza massima */
+}
+
+.encouragement-text {
+  color: #21b8d0; /* Colore del testo */
+  text-align: center; /* Centrare il testo */
+  margin-bottom: 20px; /* Spazio sotto il testo */
+  font-size: 1.5rem; /* Dimensione del testo */
+}

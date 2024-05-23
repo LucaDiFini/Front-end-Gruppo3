@@ -1,0 +1,105 @@
+/* Stili generali del container */
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 170px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Stili delle sezioni principali */
+.section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    max-width: 375px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+}
+
+.user-section,
+.news-section {
+    width: 80%;
+    max-width: 1200px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.user-section:hover,
+.news-section:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+}
+
+/* Stili della griglia delle news e adattamenti */
+.news-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.news-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    width: 30%;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.news-card img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-3px);
+}
+
+.news-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Regole CSS per i dispositivi con schermi più piccoli */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 20px;
+    }
+
+    .section,
+    .calendar-section,
+    .notifications-section,
+    .courses-section,
+    .user-section,
+    .news-section {
+        width: 100%;
+    }
+
+    .news-card {
+        width: 100%;
+    }
+
+    .news-card img {
+        transition: none;
+    }
+
+    .news-card:hover img {
+        transform: none;
+    }
+}

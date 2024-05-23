@@ -6,8 +6,6 @@ import logo from '@/assets/logo3.png';
 import Image from "next/image";
 import classes from './main-header.module.css';
 
-
-
 export default function MainHeader() {
     return (
       <div className={styles.headerContainer}>

@@ -1,0 +1,53 @@
+/* Stili di base */
+.container {
+    padding: 20px;
+    
+  }
+  
+  /* Stili per schermi piccoli */
+  @media (max-width: 767px) {
+    .card {
+      margin-bottom: 20px;
+    }
+    .form-control {
+      width: 100%;
+    }
+    .btn {
+      width: 100%; /* Larghezza del pulsante per schermi piccoli */
+    }
+  }
+  
+  /* Stili per schermi medi */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .card {
+      margin-bottom: 20px;
+    }
+    .form-control {
+      width: 100%;
+    }
+    .btn {
+      width: 75%; /* Larghezza del pulsante per schermi medi */
+    }
+  }
+  
+  /* Stili per schermi grandi */
+  @media (min-width: 992px) {
+    .form-control {
+      width: auto;
+    }
+    .btn {
+      width: 50%; /* Larghezza del pulsante per schermi grandi */
+      max-width: 200px; /* Larghezza massima per il pulsante */
+    }
+  }
+  
+  /* Stili per il pulsante */
+  .btn {
+    padding: 10px 20px; /* Padding del pulsante */
+    width: 200px; /* Imposta la larghezza automatica */
+    max-width: 200px; /* Larghezza massima */
+    margin: 0 auto; /* Centra il pulsante */
+    display: block;
+  }
+
+  
