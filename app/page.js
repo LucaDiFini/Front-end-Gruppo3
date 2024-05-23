@@ -29,8 +29,18 @@ export default function Home() {
                 Metodo innovativo e tecnologia all’avanguardia per un percorso di crescita
                 professionale mirato a farti entrare nel mondo del lavoro con le giuste competenze.
       </p>
-      <button className={styles.button}>RICHIEDI INFORMAZIONI</button>
+      <Link href="/login" passHref>
+        <button className={styles.button}>RICHIEDI INFORMAZIONI</button>
+      </Link>
       </div>
+
+
+      
+        
+
+
+
+
       <div className={styles.image}>
       <Image src={incom}/>
       </div>
@@ -140,7 +150,7 @@ export default function Home() {
                   <p className="card-text">Diventa AR/VR Game Developer: acquisirai le competenze per modellare, strutturare, sviluppare e pubblicare applicazioni per la realtà aumentata e virtuale, videogiochi sui principali store, e creare esperienze interattive nei nuovi Metaversi.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <Link href="/corsi" passHref>
+                      <Link href="/login" passHref>
                         <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                       </Link>
                     </div>
@@ -160,7 +170,7 @@ export default function Home() {
                   <p className="card-text">Diventa professionista della gestione e analisi dei dati: imparerai a mettere i dati al servizio del business e a trovare la tua opportunità professionale nelle migliori aziende in Italia e all’estero.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <Link href="/corsi" passHref>
+                      <Link href="/login" passHref>
                         <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                       </Link>                    </div>
                   </div>
@@ -174,7 +184,7 @@ export default function Home() {
                   <p className="card-text">Diventa Web Developer, avrai le competenze per supportare lo sviluppo e l’integrazione di soluzioni software evolute all’interno dei processi aziendali. Sarai in grado di lavorare con tecnologie moderne e contribuire all'innovazione delle aziende.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <Link href="/corsi" passHref>
+                      <Link href="/login" passHref>
                         <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                       </Link>
                     </div>
@@ -189,7 +199,7 @@ export default function Home() {
                   <p className="card-text">Diventa professionista della creazione di ambienti digitali complessi: imparerai a gestire ogni fase della progettazione di software e potrai lavorare nelle migliori aziende in Italia e all’estero.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <Link href="/corsi" passHref>
+                      <Link href="/login" passHref>
                         <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                       </Link>                    </div>
                   </div>
@@ -203,7 +213,7 @@ export default function Home() {
                   <p className="card-text">Diventa un professionista capace di conoscere e creare strategie marketing per i new media: potrai trovare lavoro come Digital ADS Specialist, Social Media Manager, Copywriter e molto altro.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <Link href="/corsi" passHref>
+                      <Link href="/login" passHref>
                         <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                       </Link>                      
                     </div>
@@ -219,7 +229,7 @@ export default function Home() {
                   <p className="card-text">Diventa un professionista e gestisci ogni aspetto della comunicazione digital delle aziende: potrai trovare lavoro come Web Designer, Graphic Designer, Video Editor e molto altro.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <Link href="/corsi" passHref>
+                      <Link href="/login" passHref>
                         <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
                       </Link>                      
                     </div>
