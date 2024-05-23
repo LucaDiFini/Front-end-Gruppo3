@@ -1,9 +1,22 @@
 /* page.module.css */
+/* page.module.css */
 .form-bg-azzurro {
+    max-width: 1200px;
+    padding: 30px;
+    margin-bottom: 20px;
     background-color: #21b8d0;
-    /* Colore azzurro */
-    padding: 20px;
-    /* Padding per il form */
+    padding: 1%;
     border-radius: 10px;
-    /* Arrotonda gli angoli del form */
+    max-width: 500px;
+    width: 100%;
+    margin-top: 20px;
+    /* Aggiungi spazio sopra il form */
+}
+
+.container {
+    flex-direction: column;
+    justify-content: center;
+
+    padding-top: 90px;
+    /* Aggiungi spazio in cima per spostare tutto più in basso */
 }
