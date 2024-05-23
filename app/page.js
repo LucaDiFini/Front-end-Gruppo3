@@ -15,6 +15,8 @@ import webdes from '@/assets/webdes.png';
 import incom from '@/assets/incom.webp';
 import Image from "next/image";
 import CallToAction from '@/components/call-to-action';
+import Link from 'next/link';
+
 
 export default function Home() {
   return (
@@ -68,11 +70,25 @@ export default function Home() {
              
               <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                 {/* Bottoni con link */}
-                <a href="https://www.comune.como.it/it/" target="_blank">
-                  <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Scopri Como</button>
-                </a>
+                <Link href="/corsi" passHref>
+                  <button type="button" class="btn btn-danger btn-lg px-4 me-md-2 fw-bold" className={styles.color}>Scopri i nostri corsi</button>
+                </Link>
+
+
+
+              
+
+                
+
+
+
+
+
+
+
+
  
-                <a href="https://www.google.com/maps/place/Stadio+Comunale+G.+Sinigaglia/@45.8138512,9.0723706,16z/data=!3m1!4b1!4m6!3m5!1s0x47869dadbd940c5d:0xf297e84469d5f04a!8m2!3d45.8138512!4d9.0723706!16zL20vMGN2OG52?hl=en&entry=ttu" target="_blank">
+                <a href="https://www.google.com/maps/place/ITS+INCOM+Academy/@45.6358369,8.8513523,17.5z/data=!3m1!5s0x47868be28637c3b7:0xfbf7ca2cce96667b!4m14!1m7!3m6!1s0x47868b8a578a3fd5:0xae587e0bfe4fa313!2sITS+INCOM+Academy!8m2!3d45.6360424!4d8.8509754!16s%2Fg%2F11j219xg20!3m5!1s0x47868b8a578a3fd5:0xae587e0bfe4fa313!8m2!3d45.6360424!4d8.8509754!16s%2Fg%2F11j219xg20?entry=ttu">
                   <button type="button" class="btn btn-outline-secondary btn-lg px-4">Mappa</button>
                 </a>
               </div>
@@ -89,8 +105,16 @@ export default function Home() {
           <span className={styles.month}>GIUGNO</span>
         </div>
         
-        <a href="#" className={styles.ctaButton}>PARTECIPA AL PROSSIMO OPEN DAY</a>
+          <Link href="/Pagina_di_Registrazione" passHref>
+            <p href="#" className={styles.ctaButton}>PARTECIPA AL PROSSIMO OPEN DAY</p>
+          </Link>
       </div>
+
+
+
+      
+
+
 
 
 
@@ -116,12 +140,17 @@ export default function Home() {
                   <p className="card-text">Diventa AR/VR Game Developer: acquisirai le competenze per modellare, strutturare, sviluppare e pubblicare applicazioni per la realtà aumentata e virtuale, videogiochi sui principali store, e creare esperienze interattive nei nuovi Metaversi.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      <Link href="/corsi" passHref>
+                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+
+
             <div className="col">
               <div className="card shadow-sm">
               
@@ -131,8 +160,9 @@ export default function Home() {
                   <p className="card-text">Diventa professionista della gestione e analisi dei dati: imparerai a mettere i dati al servizio del business e a trovare la tua opportunità professionale nelle migliori aziende in Italia e all’estero.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                    </div>
+                      <Link href="/corsi" passHref>
+                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      </Link>                    </div>
                   </div>
                 </div>
               </div>
@@ -144,7 +174,9 @@ export default function Home() {
                   <p className="card-text">Diventa Web Developer, avrai le competenze per supportare lo sviluppo e l’integrazione di soluzioni software evolute all’interno dei processi aziendali. Sarai in grado di lavorare con tecnologie moderne e contribuire all'innovazione delle aziende.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      <Link href="/corsi" passHref>
+                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -157,9 +189,9 @@ export default function Home() {
                   <p className="card-text">Diventa professionista della creazione di ambienti digitali complessi: imparerai a gestire ogni fase della progettazione di software e potrai lavorare nelle migliori aziende in Italia e all’estero.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      
-                    </div>
+                      <Link href="/corsi" passHref>
+                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      </Link>                    </div>
                   </div>
                 </div>
               </div>
@@ -171,8 +203,9 @@ export default function Home() {
                   <p className="card-text">Diventa un professionista capace di conoscere e creare strategie marketing per i new media: potrai trovare lavoro come Digital ADS Specialist, Social Media Manager, Copywriter e molto altro.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      
+                      <Link href="/corsi" passHref>
+                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      </Link>                      
                     </div>
                   </div>
                   
@@ -186,8 +219,9 @@ export default function Home() {
                   <p className="card-text">Diventa un professionista e gestisci ogni aspetto della comunicazione digital delle aziende: potrai trovare lavoro come Web Designer, Graphic Designer, Video Editor e molto altro.</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      
+                      <Link href="/corsi" passHref>
+                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                      </Link>                      
                     </div>
                   </div>
                   

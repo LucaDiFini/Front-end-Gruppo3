@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import { useRouter } from 'next/navigation'; // Usa useRouter da next/navigation
 import 'bootstrap/dist/css/bootstrap.min.css';
 
