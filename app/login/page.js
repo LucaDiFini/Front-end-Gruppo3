@@ -1,8 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
+import classes from './page.module.css';
 
 export default function Pagina_di_Accesso() {
   return (
+    <div className={classes.login}>
     <div className="d-flex justify-content-center align-items-center vh-100 bg-body-secondary">
       <div className="d-flex flex-row align-items-center">
         <div className={`encouragement-text ${styles['encouragement-text']} me-5`}>
@@ -43,6 +45,7 @@ export default function Pagina_di_Accesso() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

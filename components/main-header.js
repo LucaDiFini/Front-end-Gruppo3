@@ -25,13 +25,13 @@ export default function MainHeader() {
             </Link>
           </li>
           <li className={styles.navItem}>
-            <Link href="/dashboard_utente" passHref>
-              <span className={styles.navLink}>Dashboard</span>
+            <Link href="/login" passHref>
+              <span className={styles.navLink}>Corsi</span>
             </Link>
           </li>
           <li className={styles.navItem}>
-            <Link href="/corsi" passHref>
-              <span className={styles.navLink}>Corsi</span>
+            <Link href="/dashboard_utente" passHref>
+              <span className={styles.navLink}>Dashboard</span>
             </Link>
           </li>
         </ul>
