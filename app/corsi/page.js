@@ -1,4 +1,7 @@
 "use client";
+
+import classes from './page.module.css';
+
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -90,7 +93,8 @@ export default function Corsi() {
   ];
 
   return (
-    <div className="container mt-5">
+    <div className={classes.corsi}>
+    <div  className="container mt-5">
       
       <h1 className="mb-4">Corsi disponibili</h1>
       <div className="row">
@@ -109,6 +113,7 @@ export default function Corsi() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

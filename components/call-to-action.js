@@ -13,9 +13,6 @@ export default function CallToAction() {
                         <p>Ti richiamiamo senza impegno!</p>
                         <a href="#" className={styles.button}>RICHIAMATEMI ORA</a>
                     </div>
-                    <div className={styles.imageSection}>
-                        <img src="https://itsincom.it/wp-content/uploads/2023/03/chiamaci.webp" alt="Informazioni sui corsi" />
-                    </div>
 
                 </div>
             </section>
