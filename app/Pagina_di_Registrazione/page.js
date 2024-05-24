@@ -51,19 +51,19 @@ export default function Pagina_di_Accesso() {
                         <div className="modal-body p-5 pt-0">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-floating mb-3">
-                                    <input type="text" className="form-control rounded-3" id="nome" value={form.nome} onChange={handleChange} placeholder="Inserisci qui il tuo nome" />
+                                    <input type="text" className="form-control rounded-3" id="nome" value={form.nome} onChange={handleChange} />
                                     <label htmlFor="nome">Nome</label>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <input type="text" className="form-control rounded-3" id="cognome" value={form.cognome} onChange={handleChange} placeholder="Inserisci qui il tuo cognome" />
+                                    <input type="text" className="form-control rounded-3" id="cognome" value={form.cognome} onChange={handleChange} />
                                     <label htmlFor="cognome">Cognome</label>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <input type="email" className="form-control rounded-3" id="email" value={form.email} onChange={handleChange} placeholder="name@example.com" />
+                                    <input type="email" className="form-control rounded-3" id="email" value={form.email} onChange={handleChange} />
                                     <label htmlFor="email">Email address</label>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <input type="password" className="form-control rounded-3" id="password" value={form.password} onChange={handleChange} placeholder="Password" />
+                                    <input type="password" className="form-control rounded-3" id="password" value={form.password} onChange={handleChange} />
                                     <label htmlFor="password">Password</label>
                                 </div>
                                 <button className="d-block w-100 btn btn-danger mb-2 rounded-3" type="submit">Registrati</button>

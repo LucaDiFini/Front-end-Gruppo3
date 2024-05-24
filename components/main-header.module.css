@@ -1,24 +1,29 @@
 /* Header Styles */
 .headerContainer {
-  width: 110%;
-  position:fixed;
+  width: 100%;
+  position: fixed;
   top: 0;
-  background-color: #fff; /* Colore di sfondo bianco */
-  z-index: 1000; /* Assicura che l'header sia sopra gli altri contenuti */
-  
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra per un effetto flottante */
+  background-color: #fff;
+  /* Colore di sfondo bianco */
+  z-index: 1000;
+  /* Assicura che l'header sia sopra gli altri contenuti */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Aggiunge un'ombra per un effetto flottante */
 }
 
 .header {
   width: 90%;
-  padding: 40px 0; /* Regola questo valore in base alle esigenze */
+  padding: 20px 0;
+  /* Regola questo valore in base alle esigenze */
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navList {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .navItem {
@@ -26,15 +31,20 @@
 }
 
 .navLink {
-  color: #000; /* Colore del testo nero */
+  color: #000;
+  /* Colore del testo nero */
   font-size: 18px;
   padding: 10px 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 5px; /* Arrotonda gli angoli */
+  border-radius: 5px;
+  /* Arrotonda gli angoli */
+  text-decoration: none;
+  /* Rimuove la sottolineatura */
 }
 
 .navLink:hover {
-  background-color: #f0f0f0; /* Cambia colore di sfondo al passaggio del mouse */
+  background-color: #f0f0f0;
+  /* Cambia colore di sfondo al passaggio del mouse */
 }
 
 .btn {
@@ -52,8 +62,50 @@
   margin-left: 110px;
 }
 
+.noUnderline {
+  text-decoration: none !important;
+  /* Forza la rimozione della sottolineatura */
+}
+
 /* Main Content Styles */
 .mainContent {
-  margin-top: 100px; /* Altezza dell'header + padding */
-  padding: 20px; /* Facoltativo: aggiungi un po' di padding per il contenuto */
+  margin-top: 100px;
+  /* Altezza dell'header + padding */
+  padding: 20px;
+  /* Facoltativo: aggiungi un po' di padding per il contenuto */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .headerContainer {
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .navList {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .btn {
+    width: auto;
+    /* Assicura che i pulsanti non occupino tutta la larghezza */
+    margin-bottom: 10px;
+  }
+
+  .btnContainer {
+    display: flex;
+    gap: 10px;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
 }

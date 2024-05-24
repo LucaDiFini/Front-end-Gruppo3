@@ -49,3 +49,22 @@
     max-width: 100%;
     height: auto;
 }
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        /* Imposta la direzione della colonna su dispositivi mobili */
+        text-align: center;
+        /* Aggiungi questo per centrare il testo sui dispositivi mobili */
+    }
+
+    .imageSection {
+        display: none;
+        /* Nascondi l'immagine su dispositivi mobili */
+    }
+
+    .textSection {
+        max-width: 100%;
+        /* Assicura che il testo occupi tutta la larghezza disponibile */
+    }
+}

@@ -1,5 +1,4 @@
-/* page.module.css */
-/* page.module.css */
+/* Styles for the form background */
 .form-bg-azzurro {
     max-width: 1200px;
     padding: 30px;
@@ -16,7 +15,20 @@
 .container {
     flex-direction: column;
     justify-content: center;
-
     padding-top: 90px;
     /* Aggiungi spazio in cima per spostare tutto più in basso */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-top: 300px;
+        /* Aggiungi più spazio in cima per dispositivi mobili */
+    }
+
+    .form-bg-azzurro {
+        width: 100%;
+        /* Rendi il contenitore più largo */
+        margin: 0 auto;
+        /* Centra il contenitore */
+    }
 }

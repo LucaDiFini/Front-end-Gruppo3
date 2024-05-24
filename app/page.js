@@ -33,6 +33,14 @@ export default function Home() {
             <button className={styles.button}>RICHIEDI INFORMAZIONI</button>
           </Link>
         </div>
+
+
+
+
+
+
+
+
         <div className={styles.image}>
           <Image src={incom} />
         </div>
@@ -73,7 +81,7 @@ export default function Home() {
               <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                 {/* Bottoni con link */}
                 <Link href="/corsi" passHref>
-                  <button type="button" class="btn btn-danger btn-lg px-4 me-md-2 fw-bold" className={styles.color}>Scopri i nostri corsi</button>
+                  <button type="button" className={styles.color}>Scopri i nostri corsi</button>
                 </Link>
 
 
