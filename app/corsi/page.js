@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 import VR from '@/assets/VR.png';
 import data from '@/assets/analist.png';
 import webdev from '@/assets/webdev.png';

@@ -2,17 +2,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
 
 export default function Pagina_di_Accesso() {
-  return (
+    return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-body-secondary">
       <div className="d-flex flex-row align-items-center">
         <div className={`encouragement-text ${styles['encouragement-text']} me-5`}>
           <h2 className="fw-bold mb-0">Bentornato!</h2>
           <p>Accedi per scoprire le ultime novità e continuare a imparare con noi.</p>
-        </div>
+                </div>
         <div className={`modal-content rounded-4 shadow ${styles['form-bg-azzurro']} p-4`}>
           <div className="modal-header p-5 pb-4 border-bottom-0">
             <h1 className="fw-bold mb-0 fs-2">Login</h1>
-          </div>
+                </div>
           <div className="modal-body p-5 pt-0">
             <form>
               <div className="form-floating mb-3">
@@ -43,6 +43,6 @@ export default function Pagina_di_Accesso() {
           </div>
         </div>
       </div>
-    </div>
-  );
+        </div>
+    );
 }
