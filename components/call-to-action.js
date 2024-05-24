@@ -13,7 +13,6 @@ export default function CallToAction() {
                         <p>Ti richiamiamo senza impegno!</p>
                         <a href="#" className={styles.button}>RICHIAMATEMI ORA</a>
                     </div>
-                    
 
                 </div>
             </section>
