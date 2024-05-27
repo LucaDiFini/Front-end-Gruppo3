@@ -33,14 +33,6 @@ export default function Home() {
             <button className={styles.button}>RICHIEDI INFORMAZIONI</button>
           </Link>
         </div>
-
-
-
-
-
-
-
-
         <div className={styles.image}>
           <Image src={incom} />
         </div>
