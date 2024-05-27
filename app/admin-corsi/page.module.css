@@ -3,44 +3,12 @@
   padding: 20px;
 }
 
-/* Stili per la sezione "Crea un nuovo corso" */
+/* Aggiungi margine superiore e colore di sfondo alla sezione "Crea un nuovo corso" */
 .newCourseSection {
-  background-color: #21b8d0; /* Colore di sfondo */
-  padding: 20px;
-  border-radius: 10px; /* Opzionale: per arrotondare gli angoli */
-  color: white; /* Cambia il colore del testo per migliorare la leggibilità */
-}
-
-/* Stili per le card */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: white; /* Mantieni le card con sfondo bianco per contrasto */
-  color: black; /* Cambia il colore del testo nelle card */
-  border-radius: 10px; /* Aggiunto per dare un aspetto più morbido agli angoli */
-}
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Stili per gli input */
-.form-control {
-  border: 2px solid #ced4da;
-  padding: 10px;
-  transition: border-color 0.3s ease;
-}
-.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
-}
-
-/* Stili per il pulsante */
-.btn {
-  padding: 10px 20px; /* Padding del pulsante */
-  width: 200px; /* Imposta la larghezza automatica */
-  max-width: 200px; /* Larghezza massima */
-  margin: 0 auto; /* Centra il pulsante */
-  display: block;
+  margin-top: 60px; /* Puoi regolare questo valore secondo le tue necessità */
+  background-color: #21b8d0;
+  padding: 20px; /* Aggiungiamo padding per distanziare il contenuto dai bordi */
+  border-radius: 8px; /* Arrotondamento degli angoli */
 }
 
 /* Stili per schermi piccoli */
@@ -80,10 +48,11 @@
   }
 }
 
-/* Stili per la sezione "Crea un nuovo corso" */
-.new-course-section {
-  background-color: #21b8d0; /* Colore di sfondo */
-  padding: 20px;
-  border-radius: 10px; /* Opzionale: per arrotondare gli angoli */
-  color: white; /* Cambia il colore del testo per migliorare la leggibilità */
+/* Stili per il pulsante */
+.btn {
+  padding: 10px 20px; /* Padding del pulsante */
+  width: 200px; /* Imposta la larghezza automatica */
+  max-width: 200px; /* Larghezza massima */
+  margin: 0 auto; /* Centra il pulsante */
+  display: block;
 }
