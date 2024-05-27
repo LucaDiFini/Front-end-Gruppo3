@@ -8,27 +8,39 @@ import styles from './page.module.css';
 
 
 export default function Pagina_di_Accesso() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleLogin = async (e) => {
+const [error, setError] = useState(null);
+
+const handleChange = (e) => {
+    const { id, value } = e.target;
+    setForm((prevForm) => ({
+        ...prevForm,
+        [id]: value,
+    }));
+};
+
+const handleLogin = async (e) => {
     e.preventDefault();
-
-    const formData = new URLSearchParams();
-    formData.append('email', email);
-    formData.append('password', password);
-
+    setError(null);
     try {
-      const data = await loginUser(formData);
-      console.log('Login avvenuto con successo:', data);
-      localStorage.setItem('token', data.token);
-      // window.location.href = '/dashboard';
-    } catch (error) {
-      console.error('Errore durante il login:', error);
-      setError(error.message);
+        const userData = {
+            email: form.email,
+            password: form.password,
+        };
+        const response = await loginUser(userData);
+        console.log('User accessed:', response);
+
+        // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE
+        //router.push('/dashboard'); // Redirect to the dashboard page
+
+    } catch (err) {
+        setError(err.message || 'loguin failed');
     }
-  };
+};
 
   return (
     <div className="bg-body-secondary">
@@ -51,8 +63,8 @@ export default function Pagina_di_Accesso() {
                       type="email"
                       className="form-control rounded-3"
                       id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={form.email}
+                      onChange={handleChange}
                       placeholder="name@example.com"
                     />
                     <label htmlFor="email">Indirizzo email</label>
@@ -62,8 +74,9 @@ export default function Pagina_di_Accesso() {
                       type="password"
                       className="form-control rounded-3"
                       id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      value={form.password}
+                      onChange={handleChange}
+                      //onChange={(e) => setPassword(e.target.value)}
                       placeholder="Password"
                     />
                     <label htmlFor="password">Password</label>
