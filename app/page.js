@@ -3,19 +3,12 @@ import React from 'react';
 import styles from "./page.module.css";
 import classes from './page.module.css';
 import home from '@/assets/home.jpg';
-import primo from '@/assets/1.png';
-import secondo from '@/assets/2.png';
-import terzo from '@/assets/3.png';
-import VR from '@/assets/VR.png';
-import data from '@/assets/analist.png';
-import webdev from '@/assets/webdev.png';
-import cloud from '@/assets/cloud.png';
-import mark from '@/assets/mark.png';
-import webdes from '@/assets/webdes.png';
 import incom from '@/assets/incom.webp';
 import Image from "next/image";
 import CallToAction from '@/components/call-to-action';
 import Link from 'next/link';
+import ImageComponent from '@/components/image-component';
+import CourseCard from '@/components/Coursecard';
 
 
 export default function Home() {
@@ -39,22 +32,27 @@ export default function Home() {
       </div>
 
 
-      <div className={classes.cerchi}>
-        <div className="row">
-          <div className="col-lg-4">
-            <Image src={secondo} height={200} width={250} />
-            <h4 className={`${classes.text} fw-normal`}>DEI NOSTRI STUDENTI TROVA LAVORO AL TERMINE DEL PERCORSO</h4>
-          </div>
-          <div className="col-lg-4">
-            <Image src={primo} height={200} width={250} />
-            <h4 className={`${classes.text} fw-normal`}>DELLE ORE DI FORMAZIONE SI SVOLGE IN TIROCINIO IN AZIENDA</h4>
-          </div>
-          <div className="col-lg-4">
-            <Image src={terzo} height={200} width={250} />
-            <h4 className={`${classes.text} fw-normal`}>DEI NOSTRI DOCENTI PROVENGONO DAL MONDO DEL LAVORO</h4>
-          </div>
-        </div>
+
+      <div className={styles.cerchi}>
+      <div className="row">
+        <ImageComponent
+          src={require('@/assets/2.png')} // Assicurati di fornire il percorso corretto alla tua immagine
+          alt="Prima immagine"
+          text="DEI NOSTRI STUDENTI TROVA LAVORO AL TERMINE DEL PERCORSO"
+        />
+        <ImageComponent
+          src={require('@/assets/1.png')} // Assicurati di fornire il percorso corretto alla tua immagine
+          alt="Seconda immagine"
+          text="DELLE ORE DI FORMAZIONE SI SVOLGE IN TIROCINIO IN AZIENDA"
+        />
+        <ImageComponent
+          src={require('@/assets/3.png')} // Assicurati di fornire il percorso corretto alla tua immagine
+          alt="Terza immagine"
+          text="DEI NOSTRI DOCENTI PROVENGONO DAL MONDO DEL LAVORO"
+        />
       </div>
+    </div>
+
 
       <hr className="featurette-divider" />
 
@@ -130,109 +128,77 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className="album py-5 bg-body-tertiary">
-        <div className="container">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div className="col">
-              <div className="card shadow-sm">
-
-                <Image src={VR} layout="responsive" width={420} height={225} />
-
-                <div className="card-body">
-                  <p className="card-text">Diventa AR/VR Game Developer: acquisirai le competenze per modellare, strutturare, sviluppare e pubblicare applicazioni per la realtà aumentata e virtuale, videogiochi sui principali store, e creare esperienze interattive nei nuovi Metaversi.</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <Link href="/login" passHref>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div className="col">
-              <div className="card shadow-sm">
-
-                <Image src={data} layout="responsive" width={420} height={225} />
-
-                <div className="card-body">
-                  <p className="card-text">Diventa professionista della gestione e analisi dei dati: imparerai a mettere i dati al servizio del business e a trovare la tua opportunità professionale nelle migliori aziende in Italia e all’estero.</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <Link href="/login" passHref>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      </Link>                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <Image src={webdev} layout="responsive" height={225} width={420} />
-                <div className="card-body">
-                  <p className="card-text">Diventa Web Developer, avrai le competenze per supportare lo sviluppo e l’integrazione di soluzioni software evolute all’interno dei processi aziendali. Sarai in grado di lavorare con tecnologie moderne e contribuire all'innovazione delle aziende.</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <Link href="/login" passHref>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <Image src={cloud} layout="responsive" height={225} width={420} />
-                <div className="card-body">
-                  <p className="card-text">Diventa professionista della creazione di ambienti digitali complessi: imparerai a gestire ogni fase della progettazione di software e potrai lavorare nelle migliori aziende in Italia e all’estero.</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <Link href="/login" passHref>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      </Link>                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <Image src={mark} layout="responsive" height={225} width={420} />
-                <div className="card-body">
-                  <p className="card-text">Diventa un professionista capace di conoscere e creare strategie marketing per i new media: potrai trovare lavoro come Digital ADS Specialist, Social Media Manager, Copywriter e molto altro.</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <Link href="/login" passHref>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      </Link>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <Image src={webdes} layout="responsive" height={225} width={420} />
-                <div className="card-body">
-                  <p className="card-text">Diventa un professionista e gestisci ogni aspetto della comunicazione digital delle aziende: potrai trovare lavoro come Web Designer, Graphic Designer, Video Editor e molto altro.</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <Link href="/login" passHref>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
-                      </Link>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="container">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <CourseCard
+          src={require('@/assets/VR.png')}
+          alt="Diventa professionista della gestione e analisi dei dati"
+          text="Diventa AR/VR Game Developer: acquisirai le competenze per modellare, strutturare, sviluppare e pubblicare applicazioni per la realtà aumentata e virtuale, videogiochi sui principali store, e creare esperienze interattive nei nuovi Metaversi."
+        />
+        <CourseCard
+          src={require('@/assets/analist.png')}
+          alt="Diventa Web Developer"
+          text="Diventa professionista della gestione e analisi dei dati: imparerai a mettere i dati al servizio del business e a trovare la tua opportunità professionale nelle migliori aziende in Italia e all’estero."
+        />
+        <CourseCard
+          src={require('@/assets/webdev.png')}
+          alt="Diventa Web Developer"
+          text="Diventa Web Developer, avrai le competenze per supportare lo sviluppo e l’integrazione di soluzioni software evolute all’interno dei processi aziendali. Sarai in grado di lavorare con tecnologie moderne e contribuire all'innovazione delle aziende."
+        />
+        <CourseCard
+          src={require('@/assets/Cloud.png')}
+          alt="Diventa Web Developer"
+          text="Diventa professionista della creazione di ambienti digitali complessi: imparerai a gestire ogni fase della progettazione di software e potrai lavorare nelle migliori aziende in Italia e all’estero."
+        />
+        <CourseCard
+          src={require('@/assets/mark.png')}
+          alt="Diventa Web Developer"
+          text="Diventa un professionista capace di conoscere e creare strategie marketing per i new media: potrai trovare lavoro come Digital ADS Specialist, Social Media Manager, Copywriter e molto altro."
+        />
+        <CourseCard
+          src={require('@/assets/webdes.png')}
+          alt="Diventa Web Developer"
+          text="Diventa un professionista e gestisci ogni aspetto della comunicazione digital delle aziende: potrai trovare lavoro come Web Designer, Graphic Designer, Video Editor e molto altro."
+        />
         </div>
       </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <CallToAction />
     </div>
 

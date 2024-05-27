@@ -4,30 +4,39 @@ import React, { useState } from 'react';
 import { loginUser } from '../../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
-
-
+import InputForm from '@/components/input_form';
 
 export default function Pagina_di_Accesso() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+      email: '',
+      password: '',
+  });
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const [error, setError] = useState(null);
 
-    const formData = new URLSearchParams();
-    formData.append('email', email);
-    formData.append('password', password);
+  const handleChange = (e) => {
+      const { id, value } = e.target;
+      setForm((prevForm) => ({
+          ...prevForm,
+          [id]: value,
+      }));
+  };
 
-    try {
-      const data = await loginUser(formData);
-      console.log('Login avvenuto con successo:', data);
-      localStorage.setItem('token', data.token);
-      // window.location.href = '/dashboard';
-    } catch (error) {
-      console.error('Errore durante il login:', error);
-      setError(error.message);
-    }
+  const handleLogin = async (e) => {  // Renamed handleSubmit to handleLogin
+      e.preventDefault();
+      setError(null);
+      try {
+          const userData = {
+              email: form.email,
+              password: form.password,
+          };
+          const response = await loginUser(userData);
+          console.log('Login avvenuto con successo:', response);
+          localStorage.setItem('token', response.token);
+          // Redirect or show success message
+      } catch (err) {
+          setError(err.message || 'Login failed');
+      }
   };
 
   return (
@@ -46,28 +55,24 @@ export default function Pagina_di_Accesso() {
               </div>
               <div className="modal-body p-5 pt-0">
                 <form onSubmit={handleLogin}>
-                  <div className="form-floating mb-3">
-                    <input
-                      type="email"
-                      className="form-control rounded-3"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="name@example.com"
-                    />
-                    <label htmlFor="email">Indirizzo email</label>
-                  </div>
-                  <div className="form-floating mb-3">
-                    <input
-                      type="password"
-                      className="form-control rounded-3"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
-                    />
-                    <label htmlFor="password">Password</label>
-                  </div>
+                  <InputForm 
+                    type="email"  
+                    id="email" 
+                    value={form.email} 
+                    onChange={handleChange}
+                  >
+                    Indirizzo email
+                  </InputForm>
+
+                  <InputForm 
+                    type="password"  
+                    id="password" 
+                    value={form.password} 
+                    onChange={handleChange}
+                  >
+                    Password
+                  </InputForm>
+
                   <button className="d-block w-100 btn btn-danger mb-2 rounded-3" type="submit">Accedi</button>
                   <small className="text-body-secondary">Password dimenticata?</small>
                   <hr className="my-4" />
@@ -94,4 +99,3 @@ export default function Pagina_di_Accesso() {
     </div>
   );
 }
-
