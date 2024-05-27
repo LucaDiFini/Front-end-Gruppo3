@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_hero_hero_titles",
+  "info": {
+    "displayName": "HeroTitle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.title-text-with-color"
+    },
+    "Text": {
+      "type": "richtext"
+    },
+    "LinkText": {
+      "type": "string"
+    },
+    "LinkUrl": {
+      "type": "string"
+    },
+    "LinkBackgroundColors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::color.color"
+    },
+    "LinkTextColor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::color.color"
+    },
+    "Layout": {
+      "type": "enumeration",
+      "enum": [
+        "Left",
+        "Center",
+        "Right"
+      ]
+    }
+  }
+}

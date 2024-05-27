@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_layout_menu_items",
+  "info": {
+    "displayName": "MenuItem"
+  },
+  "options": {},
+  "attributes": {
+    "Linktext": {
+      "type": "string"
+    },
+    "LinkUrl": {
+      "type": "string"
+    }
+  }
+}
