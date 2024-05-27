@@ -1,53 +1,89 @@
 /* Stili di base */
 .container {
-    padding: 20px;
-    
-  }
-  
-  /* Stili per schermi piccoli */
-  @media (max-width: 767px) {
-    .card {
+  padding: 20px;
+}
+
+/* Stili per la sezione "Crea un nuovo corso" */
+.newCourseSection {
+  background-color: #21b8d0; /* Colore di sfondo */
+  padding: 20px;
+  border-radius: 10px; /* Opzionale: per arrotondare gli angoli */
+  color: white; /* Cambia il colore del testo per migliorare la leggibilità */
+}
+
+/* Stili per le card */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white; /* Mantieni le card con sfondo bianco per contrasto */
+  color: black; /* Cambia il colore del testo nelle card */
+  border-radius: 10px; /* Aggiunto per dare un aspetto più morbido agli angoli */
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Stili per gli input */
+.form-control {
+  border: 2px solid #ced4da;
+  padding: 10px;
+  transition: border-color 0.3s ease;
+}
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+/* Stili per il pulsante */
+.btn {
+  padding: 10px 20px; /* Padding del pulsante */
+  width: 200px; /* Imposta la larghezza automatica */
+  max-width: 200px; /* Larghezza massima */
+  margin: 0 auto; /* Centra il pulsante */
+  display: block;
+}
+
+/* Stili per schermi piccoli */
+@media (max-width: 767px) {
+  .card {
       margin-bottom: 20px;
-    }
-    .form-control {
+  }
+  .form-control {
       width: 100%;
-    }
-    .btn {
+  }
+  .btn {
       width: 100%; /* Larghezza del pulsante per schermi piccoli */
-    }
   }
-  
-  /* Stili per schermi medi */
-  @media (min-width: 768px) and (max-width: 991px) {
-    .card {
+}
+
+/* Stili per schermi medi */
+@media (min-width: 768px) and (max-width: 991px) {
+  .card {
       margin-bottom: 20px;
-    }
-    .form-control {
-      width: 100%;
-    }
-    .btn {
-      width: 75%; /* Larghezza del pulsante per schermi medi */
-    }
   }
-  
-  /* Stili per schermi grandi */
-  @media (min-width: 992px) {
-    .form-control {
+  .form-control {
+      width: 100%;
+  }
+  .btn {
+      width: 75%; /* Larghezza del pulsante per schermi medi */
+  }
+}
+
+/* Stili per schermi grandi */
+@media (min-width: 992px) {
+  .form-control {
       width: auto;
-    }
-    .btn {
+  }
+  .btn {
       width: 50%; /* Larghezza del pulsante per schermi grandi */
       max-width: 200px; /* Larghezza massima per il pulsante */
-    }
   }
-  
-  /* Stili per il pulsante */
-  .btn {
-    padding: 10px 20px; /* Padding del pulsante */
-    width: 200px; /* Imposta la larghezza automatica */
-    max-width: 200px; /* Larghezza massima */
-    margin: 0 auto; /* Centra il pulsante */
-    display: block;
-  }
+}
 
-  
+/* Stili per la sezione "Crea un nuovo corso" */
+.new-course-section {
+  background-color: #21b8d0; /* Colore di sfondo */
+  padding: 20px;
+  border-radius: 10px; /* Opzionale: per arrotondare gli angoli */
+  color: white; /* Cambia il colore del testo per migliorare la leggibilità */
+}
