@@ -1,56 +1,45 @@
-"use client"; // Assicurati che questa direttiva sia la prima cosa nel file
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+"use client";
+ 
+import React, { useState } from 'react';
+import { registerUser } from '../../utils/api';
 import styles from './page.module.css';
-import { useState } from 'react';
-
-export default function Register() {
-  // Inizializzazione dello stato del modulo
-  const [formData, setFormData] = useState({
-    nome: '',
-    cognome: '',
-    password: '',
-    email: '',
-  });
-
-  // Funzione per gestire il cambiamento dei campi del modulo
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
+ 
+export default function Pagina_di_Accesso() {
+    const [form, setForm] = useState({
+        nome: '',
+        cognome: '',
+        email: '',
+        password: '',
     });
-  };
-
-  // Funzione per gestire l'invio del modulo
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:8080/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Registrazione avvenuta con successo:', data);
-        // Gestisci la risposta positiva qui (ad esempio, reindirizza l'utente o mostra un messaggio di successo)
-        alert('Registrazione avvenuta con successo');
-      } else {
-        const errorData = await response.json();
-        console.error('Errore nella registrazione:', errorData);
-        // Gestisci l'errore qui (ad esempio, mostra un messaggio di errore all'utente)
-        alert(`Errore nella registrazione: ${errorData.message}`);
-      }
-    } catch (error) {
-      console.error('Errore di rete:', error);
-      alert('Errore di rete. Si prega di riprovare.');
-    }
-  };
-
+ 
+    const [error, setError] = useState(null);
+ 
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setForm((prevForm) => ({
+            ...prevForm,
+            [id]: value,
+        }));
+    };
+ 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError(null);
+        try {
+            const userData = {
+                nome: form.nome,
+                cognome: form.cognome,
+                email: form.email,
+                password: form.password,
+            };
+            const response = await registerUser(userData);
+            console.log('User registered:', response);
+            // Redirect or show success message
+        } catch (err) {
+            setError(err.message || 'Registration failed');
+        }
+    };
+ 
     return (
         <div className={styles.container}>
             <div className="modal modal-sheet position-static d-block p-4 py-md-5 bg-body-secondary" tabIndex="-1" role="dialog" id="modalSignin">
