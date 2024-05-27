@@ -73,7 +73,7 @@ export default function Home() {
               <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                 {/* Bottoni con link */}
                 <Link href="/corsi" passHref>
-                  <button type="button" class="btn btn-danger btn-lg px-4 me-md-2 fw-bold" className={styles.color}>Scopri i nostri corsi</button>
+                  <button type="button" className={styles.color}>Scopri i nostri corsi</button>
                 </Link>
 
 

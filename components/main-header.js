@@ -4,7 +4,7 @@ import styles from "./main-header.module.css";
 import logo from '@/assets/logo3.png';
 import Image from "next/image";
 import classes from './main-header.module.css';
- 
+
 export default function MainHeader() {
   return (
     <div className={styles.headerContainer}>
@@ -16,7 +16,7 @@ export default function MainHeader() {
             </div>
           </Link>
         </div>
- 
+
         <ul className={`${styles.navList} nav col-12 col-md-auto mb-2 justify-content-center mb-md-0`}>
           <li className={styles.navItem}>
             <Link href="/" passHref>
@@ -34,7 +34,7 @@ export default function MainHeader() {
             </Link>
           </li>
         </ul>
- 
+
         <div className={`${styles.btnContainer} col-md-3 text-end`}>
           <Link href="/login" passHref>
             <button className={`${styles.btn} btn btn-outline-primary me-2`}>Login</button>
