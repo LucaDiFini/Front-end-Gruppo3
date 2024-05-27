@@ -22,6 +22,12 @@
   .btn {
       width: 100%; /* Larghezza del pulsante per schermi piccoli */
   }
+  .newCourseSection {
+    margin-top: 150px; /* Puoi regolare questo valore secondo le tue necessità */
+    background-color: #21b8d0;
+    padding: 20px; /* Aggiungiamo padding per distanziare il contenuto dai bordi */
+    border-radius: 8px; /* Arrotondamento degli angoli */
+  }
 }
 
 /* Stili per schermi medi */
@@ -35,6 +41,12 @@
   .btn {
       width: 75%; /* Larghezza del pulsante per schermi medi */
   }
+  .newCourseSection {
+    margin-top: 60px; /* Puoi regolare questo valore secondo le tue necessità */
+    background-color: #21b8d0;
+    padding: 20px; /* Aggiungiamo padding per distanziare il contenuto dai bordi */
+    border-radius: 8px; /* Arrotondamento degli angoli */
+  }
 }
 
 /* Stili per schermi grandi */
@@ -47,6 +59,8 @@
       max-width: 200px; /* Larghezza massima per il pulsante */
   }
 }
+
+
 
 /* Stili per il pulsante */
 .btn {
