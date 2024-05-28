@@ -21,7 +21,7 @@ export default function Footer() {
       </nav>
       <div className={classes.footerInfo}>
         <p>&copy; {new Date().getFullYear()} ITSIncom. All rights reserved.</p>
-        <p>Contact us: <a href="mailto:segreteria@itsrizzoli.it">segreteria@itsrizzoli.it</a></p>
+        <p>Contact us: <a href="mailto:segreteria@itsincom.it">segreteria@itsincom.it</a></p>
       </div>
     </footer>
   );
