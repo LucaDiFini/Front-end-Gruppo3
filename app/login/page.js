@@ -8,35 +8,37 @@ import InputForm from '@/components/input_form';
 
 export default function Pagina_di_Accesso() {
   const [form, setForm] = useState({
-      email: '',
-      password: '',
+    email: '',
+    password: '',
   });
 
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
-      const { id, value } = e.target;
-      setForm((prevForm) => ({
-          ...prevForm,
-          [id]: value,
-      }));
+    const { id, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [id]: value,
+    }));
   };
 
-  const handleLogin = async (e) => {  // Renamed handleSubmit to handleLogin
-      e.preventDefault();
-      setError(null);
-      try {
-          const userData = {
-              email: form.email,
-              password: form.password,
-          };
-          const response = await loginUser(userData);
-          console.log('Login avvenuto con successo:', response);
-          localStorage.setItem('token', response.token);
-          // Redirect or show success message
-      } catch (err) {
-          setError(err.message || 'Login failed');
-      }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      const userData = {
+        email: form.email,
+        password: form.password,
+      };
+      const response = await loginUser(userData);
+      console.log('User accessed:', response);
+
+      // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE
+      //router.push('/dashboard'); // Redirect to the dashboard page
+
+    } catch (err) {
+      setError(err.message || 'loguin failed');
+    }
   };
 
   return (
@@ -55,19 +57,19 @@ export default function Pagina_di_Accesso() {
               </div>
               <div className="modal-body p-5 pt-0">
                 <form onSubmit={handleLogin}>
-                  <InputForm 
-                    type="email"  
-                    id="email" 
-                    value={form.email} 
+                  <InputForm
+                    type="email"
+                    id="email"
+                    value={form.email}
                     onChange={handleChange}
                   >
                     Indirizzo email
                   </InputForm>
 
-                  <InputForm 
-                    type="password"  
-                    id="password" 
-                    value={form.password} 
+                  <InputForm
+                    type="password"
+                    id="password"
+                    value={form.password}
                     onChange={handleChange}
                   >
                     Password
