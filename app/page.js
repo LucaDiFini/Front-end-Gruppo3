@@ -114,9 +114,12 @@ export default function Home() {
               alt="Digital Marketing & Communication"
               text="Diventa un esperto in Digital Marketing & Communication: Impara le strategie di marketing digitale per promuovere e comunicare con efficacia."
             />
+
+            
           </div>
         </div>
       </div>
+      <CallToAction/>
     </div>
   );
 }
