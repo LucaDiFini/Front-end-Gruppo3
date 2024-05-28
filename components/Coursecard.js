@@ -2,11 +2,12 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from '@/components/CourseCard.module.css';
 
-export default function Coursecard({ src, alt, text }) {
+export default function CourseCard({ src, alt, text }) {
   return (
     <div className="col">
-      <div className="card shadow-sm">
+      <div className={`card shadow-sm ${styles.card}`}>
         <Image src={src} layout="responsive" width={420} height={225} alt={alt} />
         <div className="card-body">
           <p className="card-text">{text}</p>

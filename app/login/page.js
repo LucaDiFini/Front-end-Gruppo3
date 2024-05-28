@@ -74,6 +74,7 @@ export default function Pagina_di_Accesso() {
                   </InputForm>
 
                   <button className="d-block w-100 btn btn-danger mb-2 rounded-3" type="submit">Accedi</button>
+                  
                   <small className="text-body-secondary">Password dimenticata?</small>
                   <hr className="my-4" />
                   <h2 className="fs-5 fw-bold mb-3">O usa un servizio esterno</h2>

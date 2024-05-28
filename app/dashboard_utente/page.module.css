@@ -79,7 +79,7 @@
 /* Regole CSS per i dispositivi con schermi più piccoli */
 @media (max-width: 768px) {
     .dashboard-container {
-        padding: 330px 20px 20px;
+        padding: 250px 20px 20px;
         /* Aumenta il padding superiore per evitare l'header */
     }
 

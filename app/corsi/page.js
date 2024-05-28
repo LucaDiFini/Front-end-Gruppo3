@@ -20,10 +20,10 @@ import CourseCard from '@/components/card-component';
 export default function Corsi() {
   const router = useRouter();
 
-  useEffect(() => {
+    useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get('/api/check-authentication'); 
+        //const response = await axios.get('/api/check-authentication'); 
         const { authenticated, role } = response.data;
         if (!authenticated || role !== 'student') {
           router.push('/login');

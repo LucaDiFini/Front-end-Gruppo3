@@ -1,33 +1,27 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/image'; // Aggiungi questa riga per importare l'elemento Image da Next.js
 import classes from './footer.module.css';
-
 
 export default function Footer() {
   return (
     <footer className={classes.footer}>
-      <div className={classes.logoContainer}>
-        <p>ITS INCOM</p>
-      </div>
+      
       <nav className={classes.nav}>
         <ul>
           <li>
-            <Link href="/meals">Home</Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/reviews">Dashboard</Link>
+            <Link href="/dashboard_utente">Dashboard</Link>
           </li>
           <li>
-            <Link href="/about">Corsi</Link>
-          </li>
-          <li>
-            
+            <Link href="/corsi">Corsi</Link>
           </li>
         </ul>
       </nav>
       <div className={classes.footerInfo}>
-        <p>&copy; 2024 ITSIncom. All rights reserved.</p>
-        <p>Contact us: contact@itsincom.it</p>
+        <p>&copy; {new Date().getFullYear()} ITSIncom. All rights reserved.</p>
+        <p>Contact us: <a href="mailto:segreteria@itsrizzoli.it">segreteria@itsrizzoli.it</a></p>
       </div>
     </footer>
   );

@@ -1,57 +1,75 @@
+/* footer.module.css */
+
+/* Rimuove la sottolineatura dal menu */
+.nav a {
+  text-decoration: none;
+}
+
+/* Cambia colore al passaggio del mouse sul menu */
+.nav a:hover {
+  color: #ff4081;
+}
+
+/* Cambia colore al passaggio del mouse sul testo "contact@itsincom.it" */
+.footerInfo a:hover {
+  color: #ff4081;
+}
+
+/* Stili per il footer */
 .footer {
-    background-color: #9b9b9b;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  .logoContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logoContainer p {
-    margin-left: 10px;
-    font-weight: bold;
-  }
-  
-  .nav {
-    margin-top: 20px;
-  }
-  
-  .nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .nav li {
-    margin: 0 10px;
-  }
-  
-  .nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    transition: all 0.3s ease;
-  }
-  
-  .nav a:hover {
-    color: #ffcc00;
-  }
-  
-  .footerInfo {
-    margin-top: 20px;
-    font-size: 14px;
-  }
-  
-  .footerInfo p {
-    margin: 5px 0;
-  }
+  background-color: #bfbfbf;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-  
+/* Stili per il logo */
+.logoContainer {
+  margin-bottom: 20px;
+}
+
+.logoContainer p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Stili per il menu */
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.nav a {
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Stili per le informazioni del footer */
+.footerInfo p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.footerInfo a {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+/* Stili per il testo del footer */
+.footerText {
+  font-size: 0.9rem;
+  color: #777;
+}
 
 
-  
