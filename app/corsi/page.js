@@ -2,6 +2,7 @@
 
 import classes from './page.module.css';
 import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,6 +12,7 @@ export default function Corsi() {
   const router = useRouter();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  
 
     useEffect(() => {
     const checkAuthentication = async () => {
