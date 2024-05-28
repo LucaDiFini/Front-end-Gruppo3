@@ -1,20 +1,17 @@
 "use client";
-
+ 
 import classes from './page.module.css';
-import { useEffect, useState } from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import CourseCard from '@/components/card-component';
-
+ 
 export default function Corsi() {
   const router = useRouter();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-
-    useEffect(() => {
+ 
+  useEffect(() => {
     const checkAuthentication = async () => {
       try {
         const response = await fetch('http://localhost:8080/auth/profile', {
@@ -24,19 +21,19 @@ export default function Corsi() {
           const data = await response.json();
           const { ruolo } = data; // Assumendo che il profilo utente contenga il campo 'ruolo'
           if (ruolo !== 's') {
-            router.push('/corsi');
+            router.push('corsi');
           }
         } else {
-          router.push('/corsi');
+          router.push('corsi');
         }
       } catch (error) {
         console.error('Errore durante il controllo dell\'autenticazione:', error);
-        router.push('/auth/login');
+        router.push('corsi');
       }
     };
     checkAuthentication();
   }, [router]);
-
+ 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -45,7 +42,14 @@ export default function Corsi() {
         });
         if (response.ok) {
           const data = await response.json();
-          setCourses(data);
+          // Modifica: Adattamento del formato dei dati dei corsi
+          const formattedCourses = data.map(course => ({
+            id: course.nome,
+            title: course.nome,
+            category: course.categoria,
+            // Aggiungi altri campi se necessario
+          }));
+          setCourses(formattedCourses);
           setLoading(false);
         } else {
           console.error('Errore durante il fetch dei corsi:', response.statusText);
@@ -58,7 +62,7 @@ export default function Corsi() {
     };
     fetchCourses();
   }, []);
-
+ 
   const applyCourse = async (courseId) => {
     try {
       const response = await fetch(`http://localhost:8080/candidatura/iscrizione/${courseId}`, {
@@ -78,7 +82,7 @@ export default function Corsi() {
       console.error('Errore durante l\'invio della candidatura:', error);
     }
   };
-
+ 
   const groupedCourses = courses.reduce((acc, course) => {
     if (!acc[course.category]) {
       acc[course.category] = [];
@@ -86,11 +90,11 @@ export default function Corsi() {
     acc[course.category].push(course);
     return acc;
   }, {});
-
+ 
   if (loading) {
     return <p>Caricamento...</p>;
   }
-
+ 
   return (
     <div className={classes.corsi}>
       <div className="container mt-5">
