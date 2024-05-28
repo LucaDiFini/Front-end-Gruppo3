@@ -5,8 +5,10 @@ import { loginUser } from '../../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
 import InputForm from '@/components/input_form';
+import useNavigation from '../../utils/useNavigation';
 
 export default function Pagina_di_Accesso() {
+  const navigateTo = useNavigation();
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -36,8 +38,15 @@ export default function Pagina_di_Accesso() {
       // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE
       //router.push('/dashboard'); // Redirect to the dashboard page
 
+      const currentPage = window.location.pathname;
+      if (currentPage === '/login') {
+        navigateTo('/');
+      } else {
+        navigateTo('/corsi');
+      }
+
     } catch (err) {
-      setError(err.message || 'loguin failed');
+      setError(err.message || 'login failed');
     }
   };
 
