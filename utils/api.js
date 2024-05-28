@@ -16,32 +16,34 @@ export const registerUser = async (userData) => {
 };
 
 // API Login
-export const loginUser = async (formData) => {
+export const loginUser = async (userData1) => {
+    console.log("ciao");
     try {
-        console.log("ciao1");
-        const response = await fetch('http://localhost:8080/auth/login', {
+        console.log("Invio richiesta di login...");
+        const response = await axios.post('http://localhost:8080/auth/login', userData1, {
+            credentials: 'include',
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams(formData).toString(), // Converti formData in una stringa nel formato corretto
+            headers: { 'Content-Type': 'application/json' }
         });
-        console.log("fetch fatta");
-        if (response.ok) {
-            console.log("dentro response");
-            const responseData = await response.json();
-            if (Object.keys(responseData).length === 0) {
-                //questo non è il problema
-                console.log("dentro errore1");
-                throw new Error('Risposta vuota ricevuta');
-            }
-            console.log("dentro response2 response:"+ responseData);
-            return responseData;
-        } else {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Errore durante il login');
-        }
+        console.log("Risposta ricevuta");
+
+
+        // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE
+        /*const responseData = response.data;
+ 
+        if (!responseData || Object.keys(responseData).length === 0) {
+            console.error("Errore: Risposta vuota ricevuta");
+            throw new Error('Risposta vuota ricevuta');
+        }*/
+
+        /*console.log("Login avvenuto con successo:", responseData);
+        return responseData;*/
+
+        //sposta     utente in un altra pagina
+
     } catch (error) {
-        throw new Error('Errore di rete. Si prega di riprovare.');
+        //errore1
+        console.error("Errore durante il login:", error);
+        throw error.response ? new Error(error.response.data.message || 'Errore durante il login') : new Error('Errore di rete. Si prega di riprovare.');
     }
 };
