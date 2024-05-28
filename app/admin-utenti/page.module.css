@@ -1,0 +1,79 @@
+/* Stili di base */
+.mainContainer {
+    padding: 20px;
+    margin-top: 150px;
+    /* Aggiungi un margine superiore per evitare che il contenuto venga coperto dall'header */
+}
+
+/* Aggiungi margine superiore e colore di sfondo alla sezione "Crea un nuovo utente" */
+.newUserSection {
+    margin-top: 60px;
+    background-color: #21b8d0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Stili per schermi piccoli */
+@media (max-width: 767px) {
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .newUserSection {
+        margin-top: 150px;
+        background-color: #21b8d0;
+        padding: 20px;
+        border-radius: 8px;
+    }
+}
+
+/* Stili per schermi medi */
+@media (min-width: 768px) and (max-width: 991px) {
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .btn {
+        width: 75%;
+    }
+
+    .newUserSection {
+        margin-top: 60px;
+        background-color: #21b8d0;
+        padding: 20px;
+        border-radius: 8px;
+    }
+}
+
+/* Stili per schermi grandi */
+@media (min-width: 992px) {
+    .form-control {
+        width: auto;
+    }
+
+    .btn {
+        width: 50%;
+        max-width: 200px;
+    }
+}
+
+/* Stili per il pulsante */
+.btn {
+    padding: 10px 20px;
+    width: 200px;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+}
