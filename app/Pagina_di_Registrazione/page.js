@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { registerUser } from '../../utils/api';
 import styles from './page.module.css';
+import InputForm from '@/components/input_form';
  
 export default function Pagina_di_Accesso() {
     const [form, setForm] = useState({
@@ -49,23 +50,30 @@ export default function Pagina_di_Accesso() {
                             <h11 className="fw-bold mb-0 fs-2">Registrazione</h11>
                         </div>
                         <div className="modal-body p-5 pt-0">
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-floating mb-3">
-                                    <input type="text" className="form-control rounded-3" id="nome" value={form.nome} onChange={handleChange} />
-                                    <label htmlFor="nome">Nome</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input type="text" className="form-control rounded-3" id="cognome" value={form.cognome} onChange={handleChange} />
-                                    <label htmlFor="cognome">Cognome</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input type="email" className="form-control rounded-3" id="email" value={form.email} onChange={handleChange} />
-                                    <label htmlFor="email">Email address</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input type="password" className="form-control rounded-3" id="password" value={form.password} onChange={handleChange} />
-                                    <label htmlFor="password">Password</label>
-                                </div>
+                            <form onSubmit={handleSubmit}>                                
+                            <InputForm type="text" id="nome" value={form.nome} 
+                                onChange={handleChange}
+                                    >
+                                Nome
+                            </InputForm>
+                            <InputForm type="text" id="cognome" value={form.cognome} 
+                                onChange={handleChange}
+                                    >
+                                Cognome
+                            </InputForm>
+                            <InputForm type="email" id="email" value={form.email} 
+                                onChange={handleChange}
+                                    >
+                                Email address
+                            </InputForm>
+                            <InputForm type="password"  id="password" value={form.password} 
+                                onChange={handleChange}
+                                    >
+                                Password
+                            </InputForm>
+                                
+                                
+
                                 <button className="d-block w-100 btn btn-danger mb-2 rounded-3" type="submit">Registrati</button>
                                 <small className="text-body-secondary">Registrandoti accetti i termini e condizioni. </small>
                                 <hr className="my-4" />

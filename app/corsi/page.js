@@ -15,6 +15,8 @@ import mark from '@/assets/mark.png';
 import webdes from '@/assets/webdes.png';
 import Image from "next/image";
 
+import CourseCard from '@/components/card-component';
+
 export default function Corsi() {
   const router = useRouter();
 
@@ -98,20 +100,9 @@ export default function Corsi() {
       
       <h1 className="mb-4">Corsi disponibili</h1>
       <div className="row">
-        {courses.map(course => (
-          <div key={course.id} className="col-md-4 mb-4">
-            <div className="card shadow-sm">
-              <Image src={course.image} layout="responsive" width={420} height={225} />
-              <div className="card-body">
-                <h5 className="card-title">{course.title}</h5>
-                <p className="card-text">Categoria: {course.category}</p>
-                <p className="card-text">Docente: {course.instructor}</p>
-                <p className="card-text">{course.description}</p>
-                <button className="btn btn-primary" onClick={() => applyCourse(course.id)}>Candidati</button>
-              </div>
-            </div>
-          </div>
-        ))}
+          {courses.map(course => (
+            <CourseCard key={course.id} course={course} applyCourse={applyCourse} />
+          ))}
       </div>
     </div>
     </div>

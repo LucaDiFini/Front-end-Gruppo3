@@ -4,43 +4,40 @@ import React, { useState } from 'react';
 import { loginUser } from '../../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
-
-
+import InputForm from '@/components/input_form';
 
 export default function Pagina_di_Accesso() {
   const [form, setForm] = useState({
-    email: '',
-    password: '',
+      email: '',
+      password: '',
   });
 
-const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
-const handleChange = (e) => {
-    const { id, value } = e.target;
-    setForm((prevForm) => ({
-        ...prevForm,
-        [id]: value,
-    }));
-};
+  const handleChange = (e) => {
+      const { id, value } = e.target;
+      setForm((prevForm) => ({
+          ...prevForm,
+          [id]: value,
+      }));
+  };
 
-const handleLogin = async (e) => {
-    e.preventDefault();
-    setError(null);
-    try {
-        const userData = {
-            email: form.email,
-            password: form.password,
-        };
-        const response = await loginUser(userData);
-        console.log('User accessed:', response);
-
-        // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE
-        //router.push('/dashboard'); // Redirect to the dashboard page
-
-    } catch (err) {
-        setError(err.message || 'loguin failed');
-    }
-};
+  const handleLogin = async (e) => {  // Renamed handleSubmit to handleLogin
+      e.preventDefault();
+      setError(null);
+      try {
+          const userData = {
+              email: form.email,
+              password: form.password,
+          };
+          const response = await loginUser(userData);
+          console.log('Login avvenuto con successo:', response);
+          localStorage.setItem('token', response.token);
+          // Redirect or show success message
+      } catch (err) {
+          setError(err.message || 'Login failed');
+      }
+  };
 
   return (
     <div className="bg-body-secondary">
@@ -58,29 +55,24 @@ const handleLogin = async (e) => {
               </div>
               <div className="modal-body p-5 pt-0">
                 <form onSubmit={handleLogin}>
-                  <div className="form-floating mb-3">
-                    <input
-                      type="email"
-                      className="form-control rounded-3"
-                      id="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="name@example.com"
-                    />
-                    <label htmlFor="email">Indirizzo email</label>
-                  </div>
-                  <div className="form-floating mb-3">
-                    <input
-                      type="password"
-                      className="form-control rounded-3"
-                      id="password"
-                      value={form.password}
-                      onChange={handleChange}
-                      //onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
-                    />
-                    <label htmlFor="password">Password</label>
-                  </div>
+                  <InputForm 
+                    type="email"  
+                    id="email" 
+                    value={form.email} 
+                    onChange={handleChange}
+                  >
+                    Indirizzo email
+                  </InputForm>
+
+                  <InputForm 
+                    type="password"  
+                    id="password" 
+                    value={form.password} 
+                    onChange={handleChange}
+                  >
+                    Password
+                  </InputForm>
+
                   <button className="d-block w-100 btn btn-danger mb-2 rounded-3" type="submit">Accedi</button>
                   <small className="text-body-secondary">Password dimenticata?</small>
                   <hr className="my-4" />
@@ -107,4 +99,3 @@ const handleLogin = async (e) => {
     </div>
   );
 }
-
