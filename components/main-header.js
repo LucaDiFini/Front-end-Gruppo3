@@ -16,22 +16,32 @@ export default function MainHeader() {
         </div>
 
         <ul className={`${styles.navList} nav col-12 col-md-auto mb-2 justify-content-center mb-md-0`}>
-          <li className={styles.navItem}>
+            <li className={styles.navItem}>
             <Link href="/" passHref legacyBehavior>
               <a className={`${styles.navLink} ${styles.noUnderline}`}>Home</a>
-            </Link>
-          </li>
-          <li className={styles.navItem}>
+              </Link>
+            </li>
+            <li className={styles.navItem}>
             <Link href="/corsi" passHref legacyBehavior>
               <a className={`${styles.navLink} ${styles.noUnderline}`}>Corsi</a>
-            </Link>
-          </li>
-          <li className={styles.navItem}>
+              </Link>
+            </li>
+            <li className={styles.navItem}>
             <Link href="/dashboard_utente" passHref legacyBehavior>
               <a className={`${styles.navLink} ${styles.noUnderline}`}>Dashboard</a>
+              </Link>
+            </li>
+            <li className={styles.navItem}>
+            <Link href="/admin-utenti" passHref legacyBehavior>
+              <a className={`${styles.navLink} ${styles.noUnderline}`}>admin-utenti</a>
             </Link>
-          </li>
-        </ul>
+            </li>
+            <li className={styles.navItem}>
+            <Link href="/admin-corsi" passHref legacyBehavior>
+              <a className={`${styles.navLink} ${styles.noUnderline}`}>admin-corsi</a>
+            </Link>
+            </li>
+          </ul>
 
         <div className={`${styles.btnContainer} col-md-3 text-end`}>
           <Link href="/login" passHref legacyBehavior>

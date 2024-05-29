@@ -63,8 +63,8 @@ export default function Pagina_di_Accesso() {
               <div className="modal-body p-5 pt-0">
                 <form onSubmit={handleLogin}>
                   <InputForm
-                    type="email"
-                    id="email"
+                      type="email"
+                      id="email"
                     value={form.email}
                     onChange={handleChange}
                   >
@@ -72,8 +72,8 @@ export default function Pagina_di_Accesso() {
                   </InputForm>
 
                   <InputForm
-                    type="password"
-                    id="password"
+                      type="password"
+                      id="password"
                     value={form.password}
                     onChange={handleChange}
                   >
