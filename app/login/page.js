@@ -1,5 +1,5 @@
-"use client";
 
+"use client"
 import React, { useState } from 'react';
 import { loginUser } from '../../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,21 +32,17 @@ export default function Pagina_di_Accesso() {
         email: form.email,
         password: form.password,
       };
-      const response = await loginUser(userData);
-      console.log('User accessed:', response);
-
-      // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE
-      //router.push('/dashboard'); // Redirect to the dashboard page
+      await loginUser(userData);
  
+      // Se il login è andato a buon fine, naviga verso la pagina desiderata
       const currentPage = window.location.pathname;
       if (currentPage === '/login') {
-        navigateTo('/');
-      } else {
         navigateTo('/corsi');
+      } else {
+        navigateTo('/');
       }
- 
     } catch (err) {
-      setError(err.message || 'login failed');
+      setError(err.message || 'Login fallito');
     }
   };
  
@@ -67,8 +63,8 @@ export default function Pagina_di_Accesso() {
               <div className="modal-body p-5 pt-0">
                 <form onSubmit={handleLogin}>
                   <InputForm
-                    type="email"
-                    id="email"
+                      type="email"
+                      id="email"
                     value={form.email}
                     onChange={handleChange}
                   >
@@ -76,8 +72,8 @@ export default function Pagina_di_Accesso() {
                   </InputForm>
  
                   <InputForm
-                    type="password"
-                    id="password"
+                      type="password"
+                      id="password"
                     value={form.password}
                     onChange={handleChange}
                   >
@@ -85,6 +81,7 @@ export default function Pagina_di_Accesso() {
                   </InputForm>
  
                   <button className="d-block w-100 btn btn-danger mb-2 rounded-3" type="submit">Accedi</button>
+ 
                   <small className="text-body-secondary">Password dimenticata?</small>
                   <hr className="my-4" />
                   <h2 className="fs-5 fw-bold mb-3">O usa un servizio esterno</h2>
