@@ -31,6 +31,16 @@ export default function MainHeader() {
               <a className={`${styles.navLink} ${styles.noUnderline}`}>Dashboard</a>
               </Link>
             </li>
+            <li className={styles.navItem}>
+            <Link href="/admin-utenti" passHref legacyBehavior>
+              <a className={`${styles.navLink} ${styles.noUnderline}`}>admin-utenti</a>
+            </Link>
+            </li>
+            <li className={styles.navItem}>
+            <Link href="/admin-corsi" passHref legacyBehavior>
+              <a className={`${styles.navLink} ${styles.noUnderline}`}>admin-corsi</a>
+            </Link>
+            </li>
           </ul>
 
         <div className={`${styles.btnContainer} col-md-3 text-end`}>
