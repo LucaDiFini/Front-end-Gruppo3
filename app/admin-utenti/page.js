@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DataTable from 'react-data-table-component';
@@ -20,27 +21,40 @@ export default function AdminUtenti() {
     }, []);
 
     useEffect(() => {
-        fetchUsers();
-    }, []);
+        if (isClient) {
+            const sessionId = Cookies.get('SESSION_ID');
+            if (sessionId) {
+                fetchUsers();
+            } else {
+                console.error('Session ID not found in cookies.');
+                setError('Session ID not found in cookies.');
+                setLoading(false);
+            }
+        }
+    }, [isClient]);
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:8080/auth/profile');
-            if (!response.ok) throw new Error('Network response was not ok');
+            const response = await fetch('http://localhost:8080/utente/all', {
+                credentials: 'include' // Assicurati di includere i cookie nella richiesta
+            });
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Network response was not ok: ${response.status} - ${errorText}`);
+            }
             const data = await response.json();
-            // Adatta i campi del database ai campi del componente
             const adaptedData = data.map(user => ({
                 id: user.id,
                 name: user.nome,
                 surname: user.cognome,
                 email: user.email,
-                course: user.corso || '' // se non esiste, assegna un valore vuoto
+                course: user.corso || ''
             }));
             setUsers(adaptedData);
             setLoading(false);
         } catch (error) {
             console.error('Errore durante il recupero degli utenti:', error);
-            setError('Errore durante il recupero degli utenti');
+            setError(`Errore durante il recupero degli utenti: ${error.message}`);
             setLoading(false);
         }
     };
