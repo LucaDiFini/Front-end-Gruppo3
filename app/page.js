@@ -35,23 +35,23 @@ export default function Home() {
 
       <div className={styles.cerchi}>
       <div className="row">
-        <ImageComponent
+  <ImageComponent
           src={require('@/assets/2.png')} // Assicurati di fornire il percorso corretto alla tua immagine
-          alt="Prima immagine"
-          text="DEI NOSTRI STUDENTI TROVA LAVORO AL TERMINE DEL PERCORSO"
-        />
-        <ImageComponent
+    alt="Prima immagine"
+    text="DEI NOSTRI STUDENTI TROVA LAVORO AL TERMINE DEL PERCORSO"
+  />
+  <ImageComponent
           src={require('@/assets/1.png')} // Assicurati di fornire il percorso corretto alla tua immagine
-          alt="Seconda immagine"
-          text="DELLE ORE DI FORMAZIONE SI SVOLGE IN TIROCINIO IN AZIENDA"
-        />
-        <ImageComponent
+    alt="Seconda immagine"
+    text="DELLE ORE DI FORMAZIONE SI SVOLGE IN TIROCINIO IN AZIENDA"
+  />
+  <ImageComponent
           src={require('@/assets/3.png')} // Assicurati di fornire il percorso corretto alla tua immagine
-          alt="Terza immagine"
-          text="DEI NOSTRI DOCENTI PROVENGONO DAL MONDO DEL LAVORO"
-        />
+    alt="Terza immagine"
+    text="DEI NOSTRI DOCENTI PROVENGONO DAL MONDO DEL LAVORO"
+  />
+</div>
       </div>
-    </div>
 
 
       <hr className="featurette-divider" />
@@ -96,7 +96,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      
 
       <div className={styles.banner}>
         <h2>PARTECIPA AL PROSSIMO <div><strong>OPEN DAY </strong></div></h2>
@@ -145,10 +145,10 @@ export default function Home() {
 
 
       <div className="album py-5 bg-body-tertiary">
-      <div className="container">
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <CourseCard
-          src={require('@/assets/VR.png')}
+        <div className="container">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <CourseCard
+              src={require('@/assets/VR.png')}
           alt="Diventa professionista della gestione e analisi dei dati"
           text="Diventa AR/VR Game Developer: acquisirai le competenze per modellare, strutturare, sviluppare e pubblicare applicazioni per la realtà aumentata e virtuale, videogiochi sui principali store, e creare esperienze interattive nei nuovi Metaversi."
         />
@@ -161,13 +161,13 @@ export default function Home() {
           src={require('@/assets/webdev.png')}
           alt="Diventa Web Developer"
           text="Diventa Web Developer, avrai le competenze per supportare lo sviluppo e l’integrazione di soluzioni software evolute all’interno dei processi aziendali. Sarai in grado di lavorare con tecnologie moderne e contribuire all'innovazione delle aziende."
-        />
-        <CourseCard
-          src={require('@/assets/Cloud.png')}
+            />
+            <CourseCard
+              src={require('@/assets/Cloud.png')}
           alt="Diventa Web Developer"
           text="Diventa professionista della creazione di ambienti digitali complessi: imparerai a gestire ogni fase della progettazione di software e potrai lavorare nelle migliori aziende in Italia e all’estero."
-        />
-        <CourseCard
+            />
+            <CourseCard
           src={require('@/assets/mark.png')}
           alt="Diventa Web Developer"
           text="Diventa un professionista capace di conoscere e creare strategie marketing per i new media: potrai trovare lavoro come Digital ADS Specialist, Social Media Manager, Copywriter e molto altro."

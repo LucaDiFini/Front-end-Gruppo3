@@ -37,10 +37,10 @@ export default function MainHeader() {
 
         <div className={`${styles.btnContainer} col-md-3 text-end`}>
           <Link href="/login" passHref>
-            <button className={`${styles.btn} btn btn-outline-primary me-2`}>Login</button>
+              <button className={`${styles.btn} btn btn-outline-primary me-2`}>Login</button>
           </Link>
           <Link href="/Pagina_di_Registrazione" passHref>
-            <button className={`${styles.btn} btn btn-outline-primary`}>Sign Up</button>
+              <button className={`${styles.btn} btn btn-outline-primary`}>Sign Up</button>
           </Link>
         </div>
       </header>

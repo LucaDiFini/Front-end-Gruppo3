@@ -2,42 +2,42 @@
     background-color: #9b9b9b;
     color: #fff;
     padding: 20px 0;
-    text-align: center;
-  }
-  
-  .logoContainer {
+  text-align: center;
+}
+
+.logoContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .logoContainer p {
+}
+
+.logoContainer p {
     margin-left: 10px;
-    font-weight: bold;
-  }
-  
+  font-weight: bold;
+}
+
   .nav {
     margin-top: 20px;
   }
   
-  .nav ul {
-    list-style: none;
-    padding: 0;
+.nav ul {
+  list-style: none;
+  padding: 0;
     display: flex;
     justify-content: center;
-  }
-  
-  .nav li {
+}
+
+.nav li {
     margin: 0 10px;
-  }
-  
-  .nav a {
+}
+
+.nav a {
     color: #fff;
     text-decoration: none;
     font-size: 16px;
     transition: all 0.3s ease;
-  }
-  
+}
+
   .nav a:hover {
     color: #ffcc00;
   }
@@ -47,11 +47,10 @@
     font-size: 14px;
   }
   
-  .footerInfo p {
-    margin: 5px 0;
+.footerInfo p {
+  margin: 5px 0;
   }
 
   
 
 
-  

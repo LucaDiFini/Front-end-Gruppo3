@@ -1,5 +1,5 @@
 "use client";
- 
+
 import React, { useState } from 'react';
 import { loginUser } from '../../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -34,7 +34,7 @@ export default function Pagina_di_Accesso() {
       };
       const response = await loginUser(userData);
       console.log('User accessed:', response);
- 
+
       // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE
       //router.push('/dashboard'); // Redirect to the dashboard page
  
