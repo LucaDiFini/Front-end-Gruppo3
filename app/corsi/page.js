@@ -1,16 +1,16 @@
 "use client";
-
+ 
 import classes from './page.module.css';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CourseCard from '@/components/card-component';
-
+ 
 export default function Corsi() {
   const router = useRouter();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-
+ 
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
@@ -33,7 +33,7 @@ export default function Corsi() {
     };
     checkAuthentication();
   }, [router]);
-
+ 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -62,7 +62,7 @@ export default function Corsi() {
     };
     fetchCourses();
   }, []);
-
+ 
   const applyCourse = async (courseId) => {
     try {
       const response = await fetch(`http://localhost:8080/candidatura/iscrizione/${courseId}`, {
@@ -82,7 +82,7 @@ export default function Corsi() {
       console.error('Errore durante l\'invio della candidatura:', error);
     }
   };
-
+ 
   const groupedCourses = courses.reduce((acc, course) => {
     if (!acc[course.category]) {
       acc[course.category] = [];
@@ -90,11 +90,11 @@ export default function Corsi() {
     acc[course.category].push(course);
     return acc;
   }, {});
-
+ 
   if (loading) {
     return <p>Caricamento...</p>;
   }
-
+ 
   return (
     <div className={classes.corsi}>
       <div className="container mt-5">
