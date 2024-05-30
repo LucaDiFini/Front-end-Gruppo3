@@ -1,28 +1,18 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';  
+import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import Calendar from 'react-calendar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-calendar/dist/Calendar.css';
 
+const BASE_URL = 'http://localhost:8080'; // Modifica questo con il tuo URL base
+
 const Dashboard = () => {
-    const coursesData = [
-        { id: 1, name: 'Corso di Web Developer', status: 'In attesa', progress: 25 },
-    ];
-
-    const studentData = {
-        name: 'Mario Rossi',
-        email: 'mario.rossi@example.com',
-        phone: '+39 1234567890',
-        address: 'Via Roma 123, 00100 Roma',
-        course: 'Corso di Informatica Avanzata',
-        applicationStatus: 'Approvata'
-    };
-
-    const notifications = [
-        'Notifica 1',
-        'Notifica 2',
-        'Notifica 3'
-    ];
+    const [userData, setUserData] = useState(null);
+    const [coursesData, setCoursesData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const newsData = [
         {
@@ -46,14 +36,55 @@ const Dashboard = () => {
         // Aggiungi altre notizie qui se necessario
     ];
 
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                // Effettua la chiamata all'API per ottenere i dati dell'utente
+                const response = await fetch(`${BASE_URL}/utente/profile`, {
+                    credentials: 'include', // Include i cookie con la richiesta
+                });
+
+                if (!response.ok) {
+                    throw new Error('Errore nel recupero dei dati utente');
+                }
+
+                const userData = await response.json();
+                setUserData(userData);
+
+                // Effettua la chiamata all'API per ottenere i dati dei corsi
+                const coursesResponse = await fetch(`${BASE_URL}/corsi`, {
+                    credentials: 'include', // Include i cookie con la richiesta
+                });
+
+                if (!coursesResponse.ok) {
+                    throw new Error('Errore nel recupero dei dati dei corsi');
+                }
+
+                const coursesData = await coursesResponse.json();
+                setCoursesData(coursesData);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    if (loading) {
+        return <p>Caricamento in corso...</p>;
+    }
+
+    if (error) {
+        return <p>Errore: {error}</p>;
+    }
 
     return (
         <div className={styles['dashboard-container']}>
             <div className={`${styles['user-section']}`}>
-                <h2>{studentData.name}</h2>
-                <p>Email: {studentData.email}</p>
-                <p>Telefono: {studentData.phone}</p>
-                <p>Indirizzo: {studentData.address}</p>
+                <h2>{userData.nome} {userData.cognome}</h2>
+                <p>Email: {userData.email}</p>
             </div>
             <div className={`${styles['courses-section']} ${styles.section}`}>
                 <h2>Corsi</h2>
@@ -69,18 +100,11 @@ const Dashboard = () => {
                     </div>
                 ))}
             </div>
-            <div className={`${styles['notifications-section']} ${styles.section}`}>
-                <h2>Notifiche</h2>
-                {notifications.map((notification, index) => (
-                    <div key={index} className={styles['notification-card']}>
-                        <p>{notification}</p>
-                    </div>
-                ))}
-            </div>
+
             <div className={`${styles['calendar-section']} ${styles.section} ${styles.reactCalendar}`}>
                 <h2>Calendario</h2>
                 <Calendar
-                    locale="it-IT"  // Assicurati che il locale sia supportato
+                    locale="it-IT"
                 />
             </div>
             <div className={`${styles['news-section']}`}>
@@ -95,7 +119,6 @@ const Dashboard = () => {
                             </div>
                         </a>
                     ))}
-
                 </div>
             </div>
         </div>
@@ -103,3 +126,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

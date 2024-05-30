@@ -1,40 +1,25 @@
+// Usa client;
 "use client";
-
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
 
 export default function AdminCorsi() {
   const [courses, setCourses] = useState([]);
-  const [newCourse, setNewCourse] = useState({ title: '', category: '', instructor: '' });
+  const [newCourse, setNewCourse] = useState({ nome: '', categoria: '', dataInizio: '', dataFine: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await fetch('/api/check-authentication');
-        const data = await response.json();
-        const { authenticated, role } = data;
-        if (!authenticated || role !== 'admin') {
-          router.push('/login');
-        } else {
-          fetchCourses();
-        }
-      } catch (error) {
-        console.error('Errore durante il controllo dell\'autenticazione:', error);
-        setError('Errore durante il controllo dell\'autenticazione');
-      }
-    };
-
-    checkAuthentication();
-  }, [router]);
+    fetchCourses();
+  }, []);
 
   const fetchCourses = async () => {
     try {
-      const response = await fetch('/api/courses');
+      const response = await fetch('http://localhost:8080/corsi');
+      if (!response.ok) {
+        throw new Error('Errore durante il recupero dei corsi');
+      }
       const data = await response.json();
       setCourses(data);
       setLoading(false);
@@ -48,20 +33,23 @@ export default function AdminCorsi() {
   const createCourse = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/api/create-course', {
+      const response = await fetch('http://localhost:8080/corsi', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(newCourse),
       });
-      const data = await response.json();
-      alert('Corso creato con successo: ' + data.title); // Usa un alert per notificare il successo
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.message || 'Errore durante la creazione del corso');
+      }
+      alert('Corso creato con successo: ' + responseData.nome);
       fetchCourses();
-      setNewCourse({ title: '', category: '', instructor: '' });
+      setNewCourse({ nome: '', categoria: '', dataInizio: '', dataFine: '' });
     } catch (error) {
       console.error('Errore durante la creazione del corso:', error);
-      setError('Errore durante la creazione del corso');
+      setError(error.message || 'Errore durante la creazione del corso');
     }
   };
 
@@ -77,8 +65,8 @@ export default function AdminCorsi() {
             <input
               type="text"
               className="form-control"
-              value={newCourse.title}
-              onChange={(e) => setNewCourse({ ...newCourse, title: e.target.value })}
+              value={newCourse.nome}
+              onChange={(e) => setNewCourse({ ...newCourse, nome: e.target.value })}
               required
             />
           </div>
@@ -87,18 +75,28 @@ export default function AdminCorsi() {
             <input
               type="text"
               className="form-control"
-              value={newCourse.category}
-              onChange={(e) => setNewCourse({ ...newCourse, category: e.target.value })}
+              value={newCourse.categoria}
+              onChange={(e) => setNewCourse({ ...newCourse, categoria: e.target.value })}
               required
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Docente</label>
+            <label className="form-label">Data Inizio</label>
             <input
-              type="text"
+              type="date"
               className="form-control"
-              value={newCourse.instructor}
-              onChange={(e) => setNewCourse({ ...newCourse, instructor: e.target.value })}
+              value={newCourse.dataInizio}
+              onChange={(e) => setNewCourse({ ...newCourse, dataInizio: e.target.value })}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Data Fine</label>
+            <input
+              type="date"
+              className="form-control"
+              value={newCourse.dataFine}
+              onChange={(e) => setNewCourse({ ...newCourse, dataFine: e.target.value })}
               required
             />
           </div>
@@ -111,12 +109,13 @@ export default function AdminCorsi() {
       ) : (
         <div className="row">
           {courses.map(course => (
-            <div key={course.id} className="col-md-4 mb-4">
+            <div key={course.nome} className="col-md-4 mb-4">
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">{course.title}</h5>
-                  <p className="card-text">Categoria: {course.category}</p>
-                  <p className="card-text">Docente: {course.instructor}</p>
+                  <h5 className="card-title">{course.nome}</h5>
+                  <p className="card-text">Categoria: {course.categoria}</p>
+                  <p className="card-text">Data Inizio: {course.dataInizio}</p>
+                  <p className="card-text">Data Fine: {course.dataFine}</p>
                 </div>
               </div>
             </div>

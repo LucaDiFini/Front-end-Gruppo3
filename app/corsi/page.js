@@ -1,16 +1,16 @@
 "use client";
- 
+
 import classes from './page.module.css';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CourseCard from '@/components/card-component';
- 
+
 export default function Corsi() {
   const router = useRouter();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
- 
+
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
@@ -33,7 +33,7 @@ export default function Corsi() {
     };
     checkAuthentication();
   }, [router]);
- 
+
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -44,8 +44,12 @@ export default function Corsi() {
           const data = await response.json();
           // Modifica: Adattamento del formato dei dati dei corsi
           const formattedCourses = data.map(course => ({
+<<<<<<< HEAD
             //qua non ci vuole l'id del corso?
             id: course.nome,
+=======
+            id: course.id,
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
             title: course.nome,
             category: course.categoria,
             // Aggiungi altri campi se necessario
@@ -63,7 +67,7 @@ export default function Corsi() {
     };
     fetchCourses();
   }, []);
- 
+
   const applyCourse = async (courseId) => {
     try {
       const response = await fetch(`http://localhost:8080/candidatura/iscrizione/${courseId}`, {
@@ -83,7 +87,7 @@ export default function Corsi() {
       console.error('Errore durante l\'invio della candidatura:', error);
     }
   };
- 
+
   const groupedCourses = courses.reduce((acc, course) => {
     if (!acc[course.category]) {
       acc[course.category] = [];
@@ -91,11 +95,11 @@ export default function Corsi() {
     acc[course.category].push(course);
     return acc;
   }, {});
- 
+
   if (loading) {
     return <p>Caricamento...</p>;
   }
- 
+
   return (
     <div className={classes.corsi}>
       <div className="container mt-5">

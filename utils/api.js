@@ -16,19 +16,27 @@ export const registerUser = async (userData) => {
 };
 
 // API Login
-export const loginUser = async (userData) => {
+export const loginUser = async (userData1) => {
     console.log("ciao");
     try {
         console.log("Invio richiesta di login...");
-        const response = await axios.post('http://localhost:8080/auth/login', userData, {
-            withCredentials: true, // Includi i cookie nella richiesta
+        const response = await axios.post('http://localhost:8080/auth/login', userData1, {
+            credentials: 'include',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
         
 
+
         // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE 
+<<<<<<< HEAD
         const responseData = response.data;
         /*if (!responseData || Object.keys(responseData).length === 0) {
+=======
+        /*const responseData = response.data;
+
+        if (!responseData || Object.keys(responseData).length === 0) {
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
             console.error("Errore: Risposta vuota ricevuta");
             throw new Error('Risposta vuota ricevuta');
         }*/

@@ -8,6 +8,7 @@
   border-bottom: 1px solid #ccc;
   position: fixed;
   top: 0;
+<<<<<<< HEAD
   width: 100%;
   z-index: 1000; /* Assicurati che il menu sia sopra altri contenuti */
 }
@@ -15,6 +16,65 @@
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
+=======
+  background-color: #fff;
+  /* Colore di sfondo bianco */
+  z-index: 1000;
+  /* Assicura che l'header sia sopra gli altri contenuti */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Aggiunge un'ombra per un effetto flottante */
+}
+
+.header {
+  width: 90%;
+  padding: 20px 0;
+  /* Regola questo valore in base alle esigenze */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.navItem {
+  list-style: none;
+}
+
+.navLink {
+  color: #000;
+  /* Colore del testo nero */
+  font-size: 18px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+  /* Arrotonda gli angoli */
+  text-decoration: none;
+  /* Rimuove la sottolineatura */
+}
+
+.navLink:hover {
+  background-color: #f0f0f0;
+  /* Cambia colore di sfondo al passaggio del mouse */
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #fd0a7a;
+  color: #fff;
+}
+
+.logo {
+  margin-left: 110px;
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
 }
 
 .nav {
@@ -70,10 +130,13 @@
     top: 60px;
     left: 0;
     width: 100%;
+<<<<<<< HEAD
     background-color: white;
     flex-direction: column;
     align-items: flex-start;
     border-top: 1px solid #ccc;
+=======
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
   }
 
   .nav.open {
@@ -82,6 +145,7 @@
 
   .navList {
     flex-direction: column;
+<<<<<<< HEAD
     width: 100%;
   }
 
@@ -89,13 +153,29 @@
     width: 100%;
     text-align: left;
     padding: 10px 20px;
+=======
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .btn {
+    width: auto;
+    /* Assicura che i pulsanti non occupino tutta la larghezza */
+    margin-bottom: 10px;
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
   }
 
   .authButtons {
     display: none;
   }
 
+<<<<<<< HEAD
   .menuToggle {
     display: block;
+=======
+  .logo {
+    margin-left: 0;
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
   }
 }

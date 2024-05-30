@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DataTable from 'react-data-table-component';
@@ -9,7 +10,7 @@ import styles from './page.module.css';
 export default function AdminUtenti() {
     const [isClient, setIsClient] = useState(false);
     const [users, setUsers] = useState([]);
-    const [newUser, setNewUser] = useState({ nome: '', cognome: '', email: '', corso: '' });
+    const [newUser, setNewUser] = useState({ nome: '', cognome: '', email: '', password: '', ruolo: 'S' });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [search, setSearch] = useState('');
@@ -20,27 +21,45 @@ export default function AdminUtenti() {
     }, []);
 
     useEffect(() => {
-        fetchUsers();
-    }, []);
+        if (isClient) {
+            const sessionId = Cookies.get('SESSION_ID');
+            if (sessionId) {
+                fetchUsers();
+            } else {
+                console.error('Session ID not found in cookies.');
+                setError('Session ID not found in cookies.');
+                setLoading(false);
+            }
+        }
+    }, [isClient]);
 
     const fetchUsers = async () => {
         try {
+<<<<<<< HEAD
             const response = await fetch('http://localhost:8080/utente/profile');
             if (!response.ok) throw new Error('Network response was not ok');
+=======
+            const response = await fetch('http://localhost:8080/utente/all', {
+                credentials: 'include'
+            });
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Network response was not ok: ${response.status} - ${errorText}`);
+            }
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
             const data = await response.json();
-            // Adatta i campi del database ai campi del componente
             const adaptedData = data.map(user => ({
                 id: user.id,
                 name: user.nome,
                 surname: user.cognome,
                 email: user.email,
-                course: user.corso || '' // se non esiste, assegna un valore vuoto
+                ruolo: user.ruolo
             }));
             setUsers(adaptedData);
             setLoading(false);
         } catch (error) {
             console.error('Errore durante il recupero degli utenti:', error);
-            setError('Errore durante il recupero degli utenti');
+            setError(`Errore durante il recupero degli utenti: ${error.message}`);
             setLoading(false);
         }
     };
@@ -48,21 +67,40 @@ export default function AdminUtenti() {
     const createUser = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('/api/create-user', {
+            const response = await fetch('http://localhost:8080/utente/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newUser),
+                credentials: 'include',
             });
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
             alert('Utente creato con successo: ' + data.nome);
             fetchUsers();
-            setNewUser({ nome: '', cognome: '', email: '', corso: '' });
+            setNewUser({ nome: '', cognome: '', email: '', password: '', ruolo: 'S' });
         } catch (error) {
             console.error('Errore durante la creazione dell\'utente:', error);
             setError('Errore durante la creazione dell\'utente');
+        }
+    };
+
+    const changeRole = async (userId, newRole) => {
+        try {
+            const response = await fetch('http://localhost:8080/utente/changeRuolo', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id_utente: userId, new_ruolo: newRole }),
+                credentials: 'include',
+            });
+            if (!response.ok) throw new Error('Network response was not ok');
+            fetchUsers(); // Refresh the user list after changing the role
+        } catch (error) {
+            console.error('Errore durante il cambio di ruolo:', error);
+            setError('Errore durante il cambio di ruolo');
         }
     };
 
@@ -83,9 +121,20 @@ export default function AdminUtenti() {
             sortable: true,
         },
         {
-            name: 'Corso',
-            selector: row => row.course,
+            name: 'Ruolo',
+            selector: row => row.ruolo,
             sortable: true,
+            cell: row => (
+                <select
+                    value={row.ruolo}
+                    onChange={(e) => changeRole(row.id, e.target.value)}
+                    className="form-select"
+                >
+                    <option value="S">Studente</option>
+                    <option value="D">Docente</option>
+                    <option value="A">Admin</option>
+                </select>
+            ),
         },
     ];
 
@@ -94,7 +143,7 @@ export default function AdminUtenti() {
             user.name.toLowerCase().includes(search.toLowerCase()) ||
             user.surname.toLowerCase().includes(search.toLowerCase()) ||
             user.email.toLowerCase().includes(search.toLowerCase()) ||
-            user.course.toLowerCase().includes(search.toLowerCase())
+            user.ruolo.toLowerCase().includes(search.toLowerCase())
         );
     });
 
@@ -157,13 +206,26 @@ export default function AdminUtenti() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">Corso</label>
+                        <label className="form-label">Password</label>
                         <input
-                            type="text"
+                            type="password"
                             className="form-control"
-                            value={newUser.corso}
-                            onChange={(e) => setNewUser({ ...newUser, corso: e.target.value })}
+                            value={newUser.password}
+                            onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                            required
                         />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Ruolo</label>
+                        <select
+                            className="form-control"
+                            value={newUser.ruolo}
+                            onChange={(e) => setNewUser({ ...newUser, ruolo: e.target.value })}
+                        >
+                            <option value="S">Studente</option>
+                            <option value="D">Docente</option>
+                            <option value="A">Admin</option>
+                        </select>
                     </div>
                     <button type="submit" className={`${styles.btn} btn btn-danger mb-2 rounded-3`}>Crea Utente</button>
                 </form>

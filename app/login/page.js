@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // pages/login/page.js
 "use client";
 
@@ -11,6 +12,18 @@ import { AuthContext, useAuth } from '@/utils/AuthContext';
 export default function Pagina_di_Accesso() {
   const { login } = useAuth();
   const { setUserRole } = useContext(AuthContext);
+=======
+"use client";
+import React, { useState } from 'react';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from './page.module.css';
+import InputForm from '@/components/input_form';
+
+export default function Pagina_di_Accesso() {
+  const router = useRouter();
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -30,12 +43,35 @@ export default function Pagina_di_Accesso() {
     e.preventDefault();
     setError(null);
     try {
+<<<<<<< HEAD
       const userData = {
         email: form.email,
         password: form.password,
       };
       const token = await loginUser(userData);
       login(token, 'A');
+=======
+      const response = await fetch('http://localhost:8080/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+        credentials: 'include', // Assicurati che i cookie siano inclusi nella richiesta
+      });
+
+      if (!response.ok) {
+        throw new Error('Login fallito');
+      }
+
+      // Se il login è andato a buon fine, naviga verso la pagina desiderata
+      const currentPage = window.location.pathname;
+      if (currentPage === '/login') {
+        router.push('/corsi');
+      } else {
+        router.push('/');
+      }
+>>>>>>> b3a500bac589cdd01a72a9fb3f632468c82cf981
     } catch (err) {
       setError(err.message || 'Login fallito');
     }
