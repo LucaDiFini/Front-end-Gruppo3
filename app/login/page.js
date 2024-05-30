@@ -1,21 +1,20 @@
-
-"use client"
+"use client";
 import React, { useState } from 'react';
-import { loginUser } from '../../utils/api';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
 import InputForm from '@/components/input_form';
-import useNavigation from '../../utils/useNavigation';
- 
+
 export default function Pagina_di_Accesso() {
-  const navigateTo = useNavigation();
+  const router = useRouter();
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
- 
+
   const [error, setError] = useState(null);
- 
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setForm((prevForm) => ({
@@ -23,29 +22,36 @@ export default function Pagina_di_Accesso() {
       [id]: value,
     }));
   };
- 
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(null);
     try {
-      const userData = {
-        email: form.email,
-        password: form.password,
-      };
-      await loginUser(userData);
- 
+      const response = await fetch('http://localhost:8080/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+        credentials: 'include', // Assicurati che i cookie siano inclusi nella richiesta
+      });
+
+      if (!response.ok) {
+        throw new Error('Login fallito');
+      }
+
       // Se il login è andato a buon fine, naviga verso la pagina desiderata
       const currentPage = window.location.pathname;
       if (currentPage === '/login') {
-        navigateTo('/corsi');
+        router.push('/corsi');
       } else {
-        navigateTo('/');
+        router.push('/');
       }
     } catch (err) {
       setError(err.message || 'Login fallito');
     }
   };
- 
+
   return (
     <div className="bg-body-secondary">
       <div className={`modal modal-sheet position-static d-block p-4 py-md-5 ${styles.login}`} tabIndex="-1" role="dialog" id="modalSignin">
@@ -55,7 +61,7 @@ export default function Pagina_di_Accesso() {
               <h2 className="fw-bold mb-0">Bentornato!</h2>
               <p>Accedi per scoprire le ultime novità e continuare a imparare con noi.</p>
             </div>
- 
+
             <div className={`modal-content rounded-4 shadow ${styles['form-bg-azzurro']} col-lg-6 p-4`}>
               <div className="modal-header p-5 pb-4 border-bottom-0">
                 <h1 className="fw-bold mb-0 fs-2">Login</h1>
@@ -63,25 +69,25 @@ export default function Pagina_di_Accesso() {
               <div className="modal-body p-5 pt-0">
                 <form onSubmit={handleLogin}>
                   <InputForm
-                      type="email"
-                      id="email"
+                    type="email"
+                    id="email"
                     value={form.email}
                     onChange={handleChange}
                   >
                     Indirizzo email
                   </InputForm>
- 
+
                   <InputForm
-                      type="password"
-                      id="password"
+                    type="password"
+                    id="password"
                     value={form.password}
                     onChange={handleChange}
                   >
                     Password
                   </InputForm>
- 
+
                   <button className="d-block w-100 btn btn-danger mb-2 rounded-3" type="submit">Accedi</button>
- 
+
                   <small className="text-body-secondary">Password dimenticata?</small>
                   <hr className="my-4" />
                   <h2 className="fs-5 fw-bold mb-3">O usa un servizio esterno</h2>
@@ -107,4 +113,3 @@ export default function Pagina_di_Accesso() {
     </div>
   );
 }
- 

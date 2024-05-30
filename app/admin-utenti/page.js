@@ -10,7 +10,7 @@ import styles from './page.module.css';
 export default function AdminUtenti() {
     const [isClient, setIsClient] = useState(false);
     const [users, setUsers] = useState([]);
-    const [newUser, setNewUser] = useState({ nome: '', cognome: '', email: '', corso: '' });
+    const [newUser, setNewUser] = useState({ nome: '', cognome: '', email: '', password: '', ruolo: 'S' });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [search, setSearch] = useState('');
@@ -36,7 +36,7 @@ export default function AdminUtenti() {
     const fetchUsers = async () => {
         try {
             const response = await fetch('http://localhost:8080/utente/all', {
-                credentials: 'include' // Assicurati di includere i cookie nella richiesta
+                credentials: 'include'
             });
             if (!response.ok) {
                 const errorText = await response.text();
@@ -62,22 +62,40 @@ export default function AdminUtenti() {
     const createUser = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('/api/create-user', {
+            const response = await fetch('http://localhost:8080/utente/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newUser),
+                credentials: 'include',
             });
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
             alert('Utente creato con successo: ' + data.nome);
             fetchUsers();
-            //password non corso
-            setNewUser({ nome: '', cognome: '', email: '', corso: '' });
+            setNewUser({ nome: '', cognome: '', email: '', password: '', ruolo: 'S' });
         } catch (error) {
             console.error('Errore durante la creazione dell\'utente:', error);
             setError('Errore durante la creazione dell\'utente');
+        }
+    };
+
+    const changeRole = async (userId, newRole) => {
+        try {
+            const response = await fetch('http://localhost:8080/utente/changeRuolo', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id_utente: userId, new_ruolo: newRole }),
+                credentials: 'include',
+            });
+            if (!response.ok) throw new Error('Network response was not ok');
+            fetchUsers(); // Refresh the user list after changing the role
+        } catch (error) {
+            console.error('Errore durante il cambio di ruolo:', error);
+            setError('Errore durante il cambio di ruolo');
         }
     };
 
@@ -98,11 +116,20 @@ export default function AdminUtenti() {
             sortable: true,
         },
         {
-            //menu a tendina ogni volta che cambia parte API utente/changeRuolo
-            //utente/changeRuolo vuole JSON con id_utente e new_ruolo
             name: 'Ruolo',
             selector: row => row.ruolo,
             sortable: true,
+            cell: row => (
+                <select
+                    value={row.ruolo}
+                    onChange={(e) => changeRole(row.id, e.target.value)}
+                    className="form-select"
+                >
+                    <option value="S">Studente</option>
+                    <option value="D">Docente</option>
+                    <option value="A">Admin</option>
+                </select>
+            ),
         },
     ];
 
@@ -111,8 +138,7 @@ export default function AdminUtenti() {
             user.name.toLowerCase().includes(search.toLowerCase()) ||
             user.surname.toLowerCase().includes(search.toLowerCase()) ||
             user.email.toLowerCase().includes(search.toLowerCase()) ||
-            //cercare per
-            user.ruolo.includes(search.toLowerCase())
+            user.ruolo.toLowerCase().includes(search.toLowerCase())
         );
     });
 
@@ -175,13 +201,26 @@ export default function AdminUtenti() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">Corso</label>
+                        <label className="form-label">Password</label>
                         <input
-                            type="text"
+                            type="password"
                             className="form-control"
-                            value={newUser.corso}
-                            onChange={(e) => setNewUser({ ...newUser, corso: e.target.value })}
+                            value={newUser.password}
+                            onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                            required
                         />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Ruolo</label>
+                        <select
+                            className="form-control"
+                            value={newUser.ruolo}
+                            onChange={(e) => setNewUser({ ...newUser, ruolo: e.target.value })}
+                        >
+                            <option value="S">Studente</option>
+                            <option value="D">Docente</option>
+                            <option value="A">Admin</option>
+                        </select>
                     </div>
                     <button type="submit" className={`${styles.btn} btn btn-danger mb-2 rounded-3`}>Crea Utente</button>
                 </form>
