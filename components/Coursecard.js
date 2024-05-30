@@ -23,7 +23,7 @@ export default function CourseCard({ course }) {
 
   return (
     <div className="col">
-      <div className={`card shadow-sm ${styles.card}`}>
+      <div className="card shadow-sm">
         <Image src={src} layout="responsive" width={420} height={225} alt={alt} />
         <div className="card-body">
           <p className="card-text">{text}</p>
