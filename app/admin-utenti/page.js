@@ -48,7 +48,7 @@ export default function AdminUtenti() {
                 name: user.nome,
                 surname: user.cognome,
                 email: user.email,
-                course: user.corso || ''
+                ruolo: user.ruolo
             }));
             setUsers(adaptedData);
             setLoading(false);
@@ -73,6 +73,7 @@ export default function AdminUtenti() {
             const data = await response.json();
             alert('Utente creato con successo: ' + data.nome);
             fetchUsers();
+            //password non corso
             setNewUser({ nome: '', cognome: '', email: '', corso: '' });
         } catch (error) {
             console.error('Errore durante la creazione dell\'utente:', error);
@@ -97,8 +98,10 @@ export default function AdminUtenti() {
             sortable: true,
         },
         {
-            name: 'Corso',
-            selector: row => row.course,
+            //menu a tendina ogni volta che cambia parte API utente/changeRuolo
+            //utente/changeRuolo vuole JSON con id_utente e new_ruolo
+            name: 'Ruolo',
+            selector: row => row.ruolo,
             sortable: true,
         },
     ];
@@ -108,7 +111,8 @@ export default function AdminUtenti() {
             user.name.toLowerCase().includes(search.toLowerCase()) ||
             user.surname.toLowerCase().includes(search.toLowerCase()) ||
             user.email.toLowerCase().includes(search.toLowerCase()) ||
-            user.course.toLowerCase().includes(search.toLowerCase())
+            //cercare per
+            user.ruolo.includes(search.toLowerCase())
         );
     });
 

@@ -1,10 +1,26 @@
-// components/CourseCard.js
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import styles from '@/components/CourseCard.module.css';
 
-export default function CourseCard({ src, alt, text }) {
+export default function CourseCard({ course }) {
+  const { src, alt, text, id } = course;
+
+  async function newCandidatura(courseId) {
+    console.log('Course ID:', courseId);
+    try {
+      const response = await axios.post(`/candidature/iscrizione/${courseId}`, {
+        SESSION_ID: Cookies.get('SESSION_ID'),
+        id: courseId,
+      });
+      console.log('API response:', response.data);
+    } catch (error) {
+      console.error('Error making API call:', error);
+    }
+  }
+
   return (
     <div className="col">
       <div className={`card shadow-sm ${styles.card}`}>
@@ -14,7 +30,13 @@ export default function CourseCard({ src, alt, text }) {
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
               <Link href="/login" passHref>
-                <button type="button" className="btn btn-sm btn-outline-secondary">Scopri il corso</button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={() => newCandidatura(id)}
+                >
+                  Scopri il corso
+                </button>
               </Link>
             </div>
           </div>
