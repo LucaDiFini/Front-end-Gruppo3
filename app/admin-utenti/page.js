@@ -25,7 +25,7 @@ export default function AdminUtenti() {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:8080/auth/profile');
+            const response = await fetch('http://localhost:8080/utente/profile');
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
             // Adatta i campi del database ai campi del componente

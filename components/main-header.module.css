@@ -1,122 +1,101 @@
-/* Header Styles */
-.headerContainer {
-  width: 100%;
+/* components/main-header.module.css */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
   position: fixed;
   top: 0;
-  background-color: #ffffff;
-  /* Colore di sfondo bianco */
-  z-index: 1000;
-  /* Assicura che l'header sia sopra gli altri contenuti */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Aggiunge un'ombra per un effetto flottante */
-  height: 120px;
-}
-
-.header {
-  width: 90%;
-  padding: 20px 0;
-  /* Regola questo valore in base alle esigenze */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 70px;
-}
-
-.navList {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.navItem {
-  list-style: none;
-}
-
-.navLink {
-  color: #000;
-  /* Colore del testo nero */
-  font-size: 18px;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 5px;
-  /* Arrotonda gli angoli */
-  text-decoration: none !important;
-  /* Rimuove la sottolineatura */
-}
-
-.navLink:hover {
-  background-color: #f0f0f0;
-  /* Cambia colore di sfondo al passaggio del mouse */
-}
-
-.navLink:focus,
-.navLink:active {
-  text-decoration: none;
-  color: #000; /* Assicurati che non cambi colore al click o focus */
-}
-
-.btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #fd0a7a;
-  color: #fff;
+  width: 100%;
+  z-index: 1000; /* Assicurati che il menu sia sopra altri contenuti */
 }
 
 .logo {
-  margin-left: 80px;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.noUnderline {
-  text-decoration: none !important;
-  /* Forza la rimozione della sottolineatura */
+.nav {
+  display: flex;
+  align-items: center;
 }
 
-/* Main Content Styles */
-.mainContent {
-  margin-top: 100px;
-  /* Altezza dell'header + padding */
-  padding: 20px;
-  /* Facoltativo: aggiungi un po' di padding per il contenuto */
+.navList {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
-/* Responsive Styles */
+.navList li {
+  margin: 0 10px;
+}
+
+.navList li a {
+  text-decoration: none;
+  color: black;
+}
+
+.authButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.login, .signup {
+  padding: 5px 10px;
+  border: 1px solid #0070f3;
+  background-color: white;
+  color: #0070f3;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.signup {
+  background-color: #0070f3;
+  color: white;
+}
+
+.menuToggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
 @media (max-width: 768px) {
-  .headerContainer {
+  .nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
     width: 100%;
-    height: 200px;
+    background-color: white;
+    flex-direction: column;
+    align-items: flex-start;
+    border-top: 1px solid #ccc;
   }
 
-  .header {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
+  .nav.open {
+    display: flex;
   }
 
   .navList {
-    
-    gap: 10px;
-    margin-left: -70px;
+    flex-direction: column;
     width: 100%;
   }
 
-  .btn {
-    width: auto;
-    /* Assicura che i pulsanti non occupino tutta la larghezza */
-    margin-bottom: 10px;
-    margin-right: 70px;
+  .navList li {
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
   }
 
-  .btnContainer {
-    display: flex;
-    gap: 10px;
+  .authButtons {
+    display: none;
   }
 
-  .logo {
-    margin-left: 0;
-    margin-right: 70px;
+  .menuToggle {
+    display: block;
   }
 }

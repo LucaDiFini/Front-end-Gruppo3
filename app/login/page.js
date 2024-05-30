@@ -1,14 +1,16 @@
-"use client"
+// pages/login/page.js
+"use client";
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { loginUser } from '../../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
 import InputForm from '@/components/input_form';
-import useNavigation from '../../utils/useNavigation';
+import { AuthContext, useAuth } from '@/utils/AuthContext';
 
 export default function Pagina_di_Accesso() {
-  const navigateTo = useNavigation();
+  const { login } = useAuth();
+  const { setUserRole } = useContext(AuthContext);
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -32,15 +34,8 @@ export default function Pagina_di_Accesso() {
         email: form.email,
         password: form.password,
       };
-      await loginUser(userData);
-
-      // Se il login è andato a buon fine, naviga verso la pagina desiderata
-      const currentPage = window.location.pathname;
-      if (currentPage === '/login') {
-        navigateTo('/corsi');
-      } else {
-        navigateTo('/');
-      }
+      const token = await loginUser(userData);
+      login(token, 'A');
     } catch (err) {
       setError(err.message || 'Login fallito');
     }
@@ -63,8 +58,8 @@ export default function Pagina_di_Accesso() {
               <div className="modal-body p-5 pt-0">
                 <form onSubmit={handleLogin}>
                   <InputForm
-                      type="email"
-                      id="email"
+                    type="email"
+                    id="email"
                     value={form.email}
                     onChange={handleChange}
                   >
@@ -72,8 +67,8 @@ export default function Pagina_di_Accesso() {
                   </InputForm>
 
                   <InputForm
-                      type="password"
-                      id="password"
+                    type="password"
+                    id="password"
                     value={form.password}
                     onChange={handleChange}
                   >

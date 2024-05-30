@@ -14,7 +14,7 @@ export default function Corsi() {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await fetch('http://localhost:8080/auth/profile', {
+        const response = await fetch('http://localhost:8080/utente/profile', {
           credentials: 'include' // Includiamo i cookie con la richiesta
         });
         if (response.ok) {
@@ -44,6 +44,7 @@ export default function Corsi() {
           const data = await response.json();
           // Modifica: Adattamento del formato dei dati dei corsi
           const formattedCourses = data.map(course => ({
+            //qua non ci vuole l'id del corso?
             id: course.nome,
             title: course.nome,
             category: course.categoria,

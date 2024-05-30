@@ -1,8 +1,11 @@
+// layout.js
+// "use client"; // Remove this line
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MainHeader from '@/components/main-header';
 import Footer from '@/components/footer';
-
+import { AuthProvider } from '@/utils/AuthContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,11 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <MainHeader />
-        {children}
-      
-      
-      <Footer />
+        <AuthProvider>
+          <MainHeader />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
