@@ -25,19 +25,18 @@ export const loginUser = async (userData1) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
-        console.log("Risposta ricevuta");
+
 
 
         // SERVIRA' PER SPOSTARE L'UTENTE SE IL LOGIN E' ANDATO A BUON FINE 
-        /*const responseData = response.data;
-
-        if (!responseData || Object.keys(responseData).length === 0) {
+        const responseData = response.data;
+        /*if (!responseData || Object.keys(responseData).length === 0) {
             console.error("Errore: Risposta vuota ricevuta");
             throw new Error('Risposta vuota ricevuta');
         }*/
 
-        /*console.log("Login avvenuto con successo:", responseData);
-        return responseData;*/
+        console.log("Login avvenuto con successo:", responseData + " ruolo:" + responseData.ruolo);
+        return { token: responseData.token, role: responseData.ruolo };
 
         //sposta     utente in un altra pagina
 

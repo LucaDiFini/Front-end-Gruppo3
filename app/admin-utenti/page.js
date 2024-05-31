@@ -76,14 +76,17 @@ export default function AdminUtenti() {
                 }),
                 credentials: 'include',
             });
-            if (!response.ok) throw new Error('Network response was not ok');
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Network response was not ok: ${response.status} - ${errorText}`);
+            }
             const data = await response.json();
             alert('Utente creato con successo: ' + data.nome);
             fetchUsers();
             setNewUser({ nome: '', cognome: '', email: '', password: '', ruolo: 'S' });
         } catch (error) {
             console.error('Errore durante la creazione dell\'utente:', error);
-            setError('Errore durante la creazione dell\'utente');
+            setError(`Errore durante la creazione dell'utente: ${error.message}`);
         }
     };
 
@@ -97,11 +100,14 @@ export default function AdminUtenti() {
                 body: JSON.stringify({ id_utente: userId, new_ruolo: newRole }),
                 credentials: 'include',
             });
-            if (!response.ok) throw new Error('Network response was not ok');
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Network response was not ok: ${response.status} - ${errorText}`);
+            }
             fetchUsers(); // Refresh the user list after changing the role
         } catch (error) {
             console.error('Errore durante il cambio di ruolo:', error);
-            setError('Errore durante il cambio di ruolo');
+            setError(`Errore durante il cambio di ruolo: ${error.message}`);
         }
     };
 
