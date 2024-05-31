@@ -1,10 +1,12 @@
+// login.js
+
 "use client";
 import React, { useState } from 'react';
-import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './page.module.css';
 import InputForm from '@/components/input_form';
+
+const BASE_URL = 'http://localhost:8080';
 
 export default function Pagina_di_Accesso() {
   const router = useRouter();
@@ -27,22 +29,30 @@ export default function Pagina_di_Accesso() {
     e.preventDefault();
     setError(null);
     try {
-      const response = await fetch('http://localhost:8080/auth/login', {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(form),
-        credentials: 'include', // Assicurati che i cookie siano inclusi nella richiesta
+        credentials: 'include',
       });
 
       if (!response.ok) {
         throw new Error('Login fallito');
       }
 
-      // Se il login è andato a buon fine, naviga verso la pagina desiderata
-      const currentPage = window.location.pathname;
-      if (currentPage === '/login') {
+      const data = await response.json();
+      localStorage.setItem('ruolo', data.ruolo);
+
+      // Emetti un evento personalizzato
+      const event = new CustomEvent('roleUpdate', { detail: data.ruolo });
+      window.dispatchEvent(event);
+
+      // Reindirizza in base al ruolo
+      if (data.ruolo === 'A') {
+        router.push('/admin-corsi');
+      } else if (data.ruolo === 'S') {
         router.push('/corsi');
       } else {
         router.push('/');

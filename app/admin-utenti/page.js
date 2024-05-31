@@ -62,12 +62,18 @@ export default function AdminUtenti() {
     const createUser = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/utente/create', {
+            const response = await fetch('http://localhost:8080/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newUser),
+                body: JSON.stringify({
+                    nome: newUser.nome,
+                    cognome: newUser.cognome,
+                    email: newUser.email,
+                    password: newUser.password,
+                    ruolo: newUser.ruolo
+                }),
                 credentials: 'include',
             });
             if (!response.ok) throw new Error('Network response was not ok');

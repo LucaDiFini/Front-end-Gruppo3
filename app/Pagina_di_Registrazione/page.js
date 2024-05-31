@@ -1,10 +1,12 @@
 "use client";
- 
+
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation'; // usa next/navigation invece di next/router
 import { registerUser } from '../../utils/api';
 import styles from './page.module.css';
 import InputForm from '@/components/input_form';
- 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default function Pagina_di_Accesso() {
     const [form, setForm] = useState({
         nome: '',
@@ -12,9 +14,10 @@ export default function Pagina_di_Accesso() {
         email: '',
         password: '',
     });
- 
+
     const [error, setError] = useState(null);
- 
+    const router = useRouter();
+
     const handleChange = (e) => {
         const { id, value } = e.target;
         setForm((prevForm) => ({
@@ -22,7 +25,7 @@ export default function Pagina_di_Accesso() {
             [id]: value,
         }));
     };
- 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
@@ -35,12 +38,12 @@ export default function Pagina_di_Accesso() {
             };
             const response = await registerUser(userData);
             console.log('User registered:', response);
-            // Redirect or show success message
+            router.push('/'); // Reindirizza alla home page
         } catch (err) {
             setError(err.message || 'Registration failed');
         }
     };
- 
+
     return (
         <div className={styles.container}>
             <div className="modal modal-sheet position-static d-block p-4 py-md-5 bg-body-secondary" tabIndex="-1" role="dialog" id="modalSignin">
@@ -50,29 +53,27 @@ export default function Pagina_di_Accesso() {
                             <h11 className="fw-bold mb-0 fs-2">Registrazione</h11>
                         </div>
                         <div className="modal-body p-5 pt-0">
-                            <form onSubmit={handleSubmit}>                                
-                            <InputForm type="text" id="nome" value={form.nome} 
-                                onChange={handleChange}
-                                    >
-                                Nome
-                            </InputForm>
-                            <InputForm type="text" id="cognome" value={form.cognome} 
-                                onChange={handleChange}
-                                    >
-                                Cognome
-                            </InputForm>
-                            <InputForm type="email" id="email" value={form.email} 
-                                onChange={handleChange}
-                                    >
-                                Email address
-                            </InputForm>
-                            <InputForm type="password"  id="password" value={form.password} 
-                                onChange={handleChange}
-                                    >
-                                Password
-                            </InputForm>
-                                
-                                
+                            <form onSubmit={handleSubmit}>
+                                <InputForm type="text" id="nome" value={form.nome}
+                                    onChange={handleChange}
+                                >
+                                    Nome
+                                </InputForm>
+                                <InputForm type="text" id="cognome" value={form.cognome}
+                                    onChange={handleChange}
+                                >
+                                    Cognome
+                                </InputForm>
+                                <InputForm type="email" id="email" value={form.email}
+                                    onChange={handleChange}
+                                >
+                                    Email address
+                                </InputForm>
+                                <InputForm type="password" id="password" value={form.password}
+                                    onChange={handleChange}
+                                >
+                                    Password
+                                </InputForm>
 
                                 <button className="d-block w-100 btn btn-danger mb-2 rounded-3" type="submit">Registrati</button>
                                 <small className="text-body-secondary">Registrandoti accetti i termini e condizioni. </small>

@@ -8,7 +8,7 @@ import 'react-calendar/dist/Calendar.css';
 
 const BASE_URL = 'http://localhost:8080'; // Modifica questo con il tuo URL base
 
-const Dashboard = () => {
+const DashboardUtente = () => {
     const [userData, setUserData] = useState(null);
     const [coursesData, setCoursesData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -51,16 +51,35 @@ const Dashboard = () => {
                 const userData = await response.json();
                 setUserData(userData);
 
-                // Effettua la chiamata all'API per ottenere i dati dei corsi
-                const coursesResponse = await fetch(`${BASE_URL}/corsi`, {
+                // Effettua la chiamata all'API per ottenere le candidature dell'utente
+                const candidaturesResponse = await fetch(`${BASE_URL}/utente/candidature`, {
                     credentials: 'include', // Include i cookie con la richiesta
                 });
 
-                if (!coursesResponse.ok) {
-                    throw new Error('Errore nel recupero dei dati dei corsi');
+                if (!candidaturesResponse.ok) {
+                    throw new Error('Errore nel recupero dei dati delle candidature');
                 }
 
-                const coursesData = await coursesResponse.json();
+                const candidaturesData = await candidaturesResponse.json();
+
+                // Recupera i dettagli dei corsi per ciascuna candidatura
+                const coursesPromises = candidaturesData.map(async (candidature) => {
+                    const courseResponse = await fetch(`${BASE_URL}/corsi/${candidature.id_corso}`, {
+                        credentials: 'include',
+                    });
+
+                    if (!courseResponse.ok) {
+                        throw new Error('Errore nel recupero dei dati del corso');
+                    }
+
+                    const courseData = await courseResponse.json();
+                    return {
+                        ...courseData,
+                        esito: candidature.esito,
+                    };
+                });
+
+                const coursesData = await Promise.all(coursesPromises);
                 setCoursesData(coursesData);
             } catch (error) {
                 setError(error.message);
@@ -90,13 +109,8 @@ const Dashboard = () => {
                 <h2>Corsi</h2>
                 {coursesData.map(course => (
                     <div key={course.id} className={styles['course-card']}>
-                        <h3>{course.name}</h3>
-                        <p>Status: {course.status}</p>
-                        <div className={styles['progress-bar']}>
-                            <div className={styles['progress-bar-fill']} style={{ width: `${course.progress}%`, backgroundColor: course.progress < 50 ? '#ff6363' : course.progress < 75 ? '#ffd700' : '#32cd32' }}>
-                                <span className={styles['progress-bar-text']}>{course.progress}%</span>
-                            </div>
-                        </div>
+                        <h3>{course.nome}</h3>
+                        <p>Esito: {course.esito}</p>
                     </div>
                 ))}
             </div>
@@ -125,5 +139,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
-
+export default DashboardUtente;

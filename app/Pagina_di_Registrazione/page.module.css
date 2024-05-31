@@ -3,7 +3,8 @@
     max-width: 1200px;
     padding: 30px;
     margin-bottom: 20px;
-    background-color: #21b8d0;
+    background-color: #21b8d0 !important;
+    /* Utilizza !important se necessario */
     padding: 1%;
     border-radius: 10px;
     max-width: 500px;

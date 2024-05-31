@@ -33,7 +33,7 @@ export default function AdminCorsi() {
   const createCourse = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/corsi', {
+      const response = await fetch('http://localhost:8080/corsi/nuovo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

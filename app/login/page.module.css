@@ -1,50 +1,52 @@
 /* page.module.css */
 
 .form-bg-azzurro {
-  background-color: #21b8d0; /* Colore azzurro */
-  padding: 1%; /* Ridotto ulteriormente il padding per il form */
-  border-radius: 10px; /* Arrotonda gli angoli del form */
-  max-width: 500px; /* Imposta una larghezza massima */
-  width: 100%; /* Assicura che il form occupi tutta la larghezza disponibile fino alla larghezza massima */
+  background-color: #21b8d0 !important;
+  padding: 1% !important;
+  border-radius: 10px !important;
+  max-width: 500px !important;
+  width: 100% !important;
 }
 
 .encouragement-text {
-  color: #21b8d0; /* Colore del testo */
-  text-align: center; /* Centrare il testo */
-  margin-bottom: 20px; /* Spazio sotto il testo */
-  font-size: 1.5rem; /* Dimensione del testo */
+  color: #21b8d0;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
   margin-top: 250px;
   padding-right: 150px;
 }
 
-.login{
+.login {
   margin-top: 130px;
   color: #000000;
   padding-bottom: 5px;
 }
-@media (max-width: 768px){
-.login{
-  margin-top: 227px;
-  color: #000000;
-  padding-bottom: 5px;
-}
-.encouragement-text {
-  display: none;
-  color: #21b8d0; /* Colore del testo */
-  text-align: center; /* Centrare il testo */
-  margin-bottom: 20px; /* Spazio sotto il testo */
-  font-size: 1.5rem; /* Dimensione del testo */
-  margin-top: 10px;
-  padding-right: 25px;
-}
-.form-bg-azzurro {
-  background-color: #21b8d0; /* Colore azzurro */
-  padding: 1%; /* Ridotto ulteriormente il padding per il form */
-  border-radius: 10px; /* Arrotonda gli angoli del form */
-  max-width: 500px; /* Imposta una larghezza massima */
-  width: 100%; /* Assicura che il form occupi tutta la larghezza disponibile fino alla larghezza massima */
-  padding-top: 10px;
-  padding-bottom: 5px;
-}
-}
 
+@media (max-width: 768px) {
+  .login {
+    margin-top: 227px;
+    color: #000000;
+    padding-bottom: 5px;
+  }
+
+  .encouragement-text {
+    display: none;
+    color: #21b8d0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    padding-right: 25px;
+  }
+
+  .form-bg-azzurro {
+    background-color: #21b8d0;
+    padding: 1%;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+}

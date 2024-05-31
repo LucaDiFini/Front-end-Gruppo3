@@ -1,38 +1,21 @@
 "use client";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import classes from './page.module.css';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import CourseCard from '@/components/card-component';
 
+const categoryImages = {
+  'programmazione': '/assets/categoria1.png',
+  'nuove_tecnologie': '/assets/categoria2.png',
+  'comunicazione': '/assets/categoria3.png',
+  // Aggiungi altre categorie e immagini
+};
+
 export default function Corsi() {
-  const router = useRouter();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/auth/profile', {
-          credentials: 'include' // Includiamo i cookie con la richiesta
-        });
-        if (response.ok) {
-          const data = await response.json();
-          const { ruolo } = data; // Assumendo che il profilo utente contenga il campo 'ruolo'
-          if (ruolo !== 's') {
-            router.push('corsi');
-          }
-        } else {
-          router.push('corsi');
-        }
-      } catch (error) {
-        console.error('Errore durante il controllo dell\'autenticazione:', error);
-        router.push('corsi');
-      }
-    };
-    checkAuthentication();
-  }, [router]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -42,12 +25,11 @@ export default function Corsi() {
         });
         if (response.ok) {
           const data = await response.json();
-          // Modifica: Adattamento del formato dei dati dei corsi
           const formattedCourses = data.map(course => ({
             id: course.id,
             title: course.nome,
             category: course.categoria,
-            // Aggiungi altri campi se necessario
+            description: course.descrizione,
           }));
           setCourses(formattedCourses);
           setLoading(false);
@@ -75,6 +57,7 @@ export default function Corsi() {
       if (response.ok) {
         const data = await response.json();
         console.log('Candidatura inviata con successo:', data);
+        alert('Candidatura inviata con successo!');
       } else {
         console.error('Errore durante l\'invio della candidatura:', response.statusText);
       }
@@ -83,7 +66,11 @@ export default function Corsi() {
     }
   };
 
-  const groupedCourses = courses.reduce((acc, course) => {
+  const filteredCourses = courses.filter(course =>
+    course.category.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const groupedCourses = filteredCourses.reduce((acc, course) => {
     if (!acc[course.category]) {
       acc[course.category] = [];
     }
@@ -99,12 +86,24 @@ export default function Corsi() {
     <div className={classes.corsi}>
       <div className="container mt-5">
         <h1 className="mb-4">Corsi disponibili</h1>
+        <input
+          type="text"
+          placeholder="Cerca per categoria"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="form-control mb-4"
+        />
         {Object.keys(groupedCourses).map(category => (
           <div key={category}>
             <h2>{category}</h2>
             <div className="row">
               {groupedCourses[category].map(course => (
-                <CourseCard key={course.id} course={course} applyCourse={applyCourse} />
+                <CourseCard
+                  key={course.id}
+                  course={course}
+                  applyCourse={applyCourse}
+                  imageSrc={categoryImages[category] || '/assets/default.png'}
+                />
               ))}
             </div>
           </div>
